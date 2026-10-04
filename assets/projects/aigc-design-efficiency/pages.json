@@ -1,0 +1,32 @@
+{
+  "pages": [
+    {
+      "number": 1,
+      "sourcePage": 22,
+      "width": 1600,
+      "height": 9555,
+      "tiles": [
+        {
+          "src": "/assets/projects/aigc-design-efficiency/page-01-01.webp",
+          "width": 1600,
+          "height": 3072
+        },
+        {
+          "src": "/assets/projects/aigc-design-efficiency/page-01-02.webp",
+          "width": 1600,
+          "height": 3072
+        },
+        {
+          "src": "/assets/projects/aigc-design-efficiency/page-01-03.webp",
+          "width": 1600,
+          "height": 3072
+        },
+        {
+          "src": "/assets/projects/aigc-design-efficiency/page-01-04.webp",
+          "width": 1600,
+          "height": 339
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+/* The original labels retain their position, typography, and interaction. */
+header .portfolio-nav-item,
+.portfolio-nav-menu .portfolio-nav-item {
+  position: relative;
+}
+
+header .portfolio-nav-item::after,
+.portfolio-nav-menu .portfolio-nav-item::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 3px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.65);
+  transform-origin: center;
+  transition: opacity 160ms ease, transform 160ms ease;
+  pointer-events: none;
+}
+
+header .portfolio-nav-item[aria-current="location"]::after,
+.portfolio-nav-menu .portfolio-nav-item[aria-current="location"]::after {
+  opacity: 0.9;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header .portfolio-nav-item::after,
+  .portfolio-nav-menu .portfolio-nav-item::after {
+    transition: none;
+  }
+}

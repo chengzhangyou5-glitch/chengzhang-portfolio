@@ -1,0 +1,63 @@
+/* Local font names only: this prototype does not bundle or fetch new font files. */
+@font-face {
+  font-family: "Portfolio DIN";
+  src: local("DIN-Regular");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Portfolio DIN";
+  src: local("DIN-Medium");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Portfolio DIN";
+  src: local("DIN-Bold");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Portfolio PingFang";
+  src: local("PingFangSC-Regular");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Portfolio PingFang";
+  src: local("PingFangSC-Medium");
+  font-style: normal;
+  font-weight: 500;
+}
+
+:root {
+  --portfolio-font-en: "Portfolio DIN", "DIN", "DIN Alternate", "DIN Condensed", Arial, sans-serif;
+  --portfolio-font-zh: "Portfolio PingFang", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --portfolio-font-mixed: "Portfolio DIN", "DIN", "DIN Alternate", "DIN Condensed", "Portfolio PingFang", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+
+  --font-sans: var(--portfolio-font-en);
+  --font-mono: var(--portfolio-font-en);
+  --font-mono-2: var(--portfolio-font-en);
+}
+
+/* The two introduction paragraphs contain both Chinese and Latin/numeric glyphs. */
+#about p {
+  font-family: var(--portfolio-font-mixed) !important;
+  font-weight: 400;
+}
+
+/* Chinese navigation and locally added settings labels. */
+header button,
+.portfolio-settings.portfolio-settings {
+  font-family: var(--portfolio-font-zh);
+}
+
+header > div:first-child > div > button,
+.portfolio-settings-panel button,
+.portfolio-settings-title {
+  font-weight: 500;
+}
