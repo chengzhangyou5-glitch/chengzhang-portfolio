@@ -1,7 +1,7 @@
 // Keep the existing refraction shader, geometry and dark profile intact.
 // This adjustment applies only to the Contact model in the light theme.
 function portfolioContactLightGlass(base, theme, sectionName, model) {
-  if (theme !== "light" || sectionName !== "footer" || model !== "model/cnt.gltf") return base;
+  if (theme !== "light" || sectionName !== "footer" || !["model/cnt.gltf", "model/cnt.glb"].includes(model)) return base;
   return {
     ...base,
     brightness: base.brightness * .96,

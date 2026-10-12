@@ -1,0 +1,117 @@
+{
+    "canvasflow-preview":  {
+                               "sourceSha256":  "012eb7f4fd8891f16512679e98b3569cfb34adffd0424eb9380c46b625245ca5",
+                               "variants":  [
+                                                {
+                                                    "src":  "/assets/works/optimized/canvasflow-preview-640w.webp",
+                                                    "width":  640,
+                                                    "height":  400,
+                                                    "bytes":  28450
+                                                },
+                                                {
+                                                    "src":  "/assets/works/optimized/canvasflow-preview-1024w.webp",
+                                                    "width":  1024,
+                                                    "height":  640,
+                                                    "bytes":  58390
+                                                },
+                                                {
+                                                    "src":  "/assets/works/optimized/canvasflow-preview-1440w.webp",
+                                                    "width":  1440,
+                                                    "height":  900,
+                                                    "bytes":  310830
+                                                }
+                                            ]
+                           },
+    "aigc-efficiency":  {
+                            "sourceSha256":  "8dce12394ea5043e50ec262885a2c259b3e1fd20cb7f879066f10f4209f8ea5a",
+                            "variants":  [
+                                             {
+                                                 "src":  "/assets/works/optimized/aigc-efficiency-640w.webp",
+                                                 "width":  640,
+                                                 "height":  360,
+                                                 "bytes":  45740
+                                             },
+                                             {
+                                                 "src":  "/assets/works/optimized/aigc-efficiency-1024w.webp",
+                                                 "width":  1024,
+                                                 "height":  577,
+                                                 "bytes":  81296
+                                             },
+                                             {
+                                                 "src":  "/assets/works/optimized/aigc-efficiency-1712w.webp",
+                                                 "width":  1712,
+                                                 "height":  964,
+                                                 "bytes":  1081526
+                                             }
+                                         ]
+                        },
+    "fliggy-lele-run":  {
+                            "sourceSha256":  "797355b116e49d68e6639fcb8f0bf9afeca1d351a81319f81da9c136fd120728",
+                            "variants":  [
+                                             {
+                                                 "src":  "/assets/works/optimized/fliggy-lele-run-640w.webp",
+                                                 "width":  640,
+                                                 "height":  360,
+                                                 "bytes":  38508
+                                             },
+                                             {
+                                                 "src":  "/assets/works/optimized/fliggy-lele-run-1024w.webp",
+                                                 "width":  1024,
+                                                 "height":  577,
+                                                 "bytes":  67106
+                                             },
+                                             {
+                                                 "src":  "/assets/works/optimized/fliggy-lele-run-1712w.webp",
+                                                 "width":  1712,
+                                                 "height":  964,
+                                                 "bytes":  912570
+                                             }
+                                         ]
+                        },
+    "lexin-health-app":  {
+                             "sourceSha256":  "f891118fd6c054a8c5ca508dc1fd85fdecc262a35bf688e0c746f1e24f7c3c70",
+                             "variants":  [
+                                              {
+                                                  "src":  "/assets/works/optimized/lexin-health-app-640w.webp",
+                                                  "width":  640,
+                                                  "height":  434,
+                                                  "bytes":  26308
+                                              },
+                                              {
+                                                  "src":  "/assets/works/optimized/lexin-health-app-1024w.webp",
+                                                  "width":  1024,
+                                                  "height":  694,
+                                                  "bytes":  44636
+                                              },
+                                              {
+                                                  "src":  "/assets/works/optimized/lexin-health-app-1712w.webp",
+                                                  "width":  1712,
+                                                  "height":  1160,
+                                                  "bytes":  154774
+                                              }
+                                          ]
+                         },
+    "canvasflow-vibe-coding":  {
+                                   "variants":  [
+                                                    {
+                                                        "width":  640,
+                                                        "bytes":  39330,
+                                                        "height":  335,
+                                                        "src":  "/assets/works/optimized/canvasflow-vibe-coding-640w.jpg"
+                                                    },
+                                                    {
+                                                        "width":  1024,
+                                                        "bytes":  76767,
+                                                        "height":  536,
+                                                        "src":  "/assets/works/optimized/canvasflow-vibe-coding-1024w.jpg"
+                                                    },
+                                                    {
+                                                        "width":  1440,
+                                                        "bytes":  123931,
+                                                        "height":  754,
+                                                        "src":  "/assets/works/optimized/canvasflow-vibe-coding-1440w.jpg"
+                                                    }
+                                                ],
+                                   "sourceSha256":  "9ddebbb6e2fc3fa1a763522a645dc6e429e247a5de44136d41a6d9e2c8bd6673"
+                               }
+}

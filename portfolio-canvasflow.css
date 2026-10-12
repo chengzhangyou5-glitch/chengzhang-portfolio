@@ -5,6 +5,8 @@ header:not(.canvasflow-header) { display: none !important; }
    position. It has no layout height in the detail's continuous reading flow. */
 .canvasflow-background-shell > .canvasflow-background-banner { display: grid !important; position: absolute; top: -100dvh; left: 0; width: 100%; height: 100dvh; visibility: hidden; pointer-events: none; }
 .canvasflow-background-shell .portfolio-background-layer canvas { opacity: .12; }
+/* A restored real residue field keeps its original pixel colors/contrast. */
+html[data-sticker-residue="ready"] .canvasflow-background-shell .portfolio-background-layer canvas { opacity: 1; }
 .canvasflow-background-shell .portfolio-background-grid { display: block !important; position: absolute; inset: 0; mix-blend-mode: difference; pointer-events: none; }
 .canvasflow-background-shell .portfolio-background-grid svg { display: block; width: 100%; height: 100%; }
 .canvasflow-arrow-left { transform: rotate(90deg); }
@@ -35,12 +37,16 @@ html.dark .canvasflow-tags li { border-color: rgb(168 196 255 / 28%); background
 .canvasflow-scroll-cue svg { width: 24px; height: 24px; }
 .canvasflow-scroll-cue:hover { color: rgb(var(--label)); }
 .canvasflow-document { scroll-margin-top: 24px; }
+.canvasflow-document:has(.project-pdf-reader) { position: relative; }
+.canvasflow-pdf-download { position: absolute; top: 4px; right: 0; display: inline-flex; align-items: center; gap: 16px; padding-bottom: 6px; border-bottom: 1px solid rgba(var(--label), .24); color: inherit; text-decoration: none; font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed); }
+.canvasflow-pdf-download:hover { opacity: .75; }
+.canvasflow-document .project-pdf-failure { color: rgb(var(--label)); background: rgb(var(--background)); }
 .canvasflow-document > h2 { margin: 0 0 28px; padding-bottom: 24px; border-bottom: 1px solid rgba(var(--label), .12); font-size: 24px; font-weight: 600; }
 .canvasflow-document-pages { display: grid; gap: 24px; }
 .canvasflow-document-placeholder { position: relative; aspect-ratio: 16/10; display: grid; place-items: center; color: var(--detail-muted); border: 1px solid rgba(var(--label), .12); border-radius: 12px; background: rgba(var(--label), .03); }
 .canvasflow-document-placeholder p { margin: 0; font-size: 18px; }
 .canvasflow-document-placeholder > span { position: absolute; right: 24px; bottom: 20px; font-size: 12px; font-family: var(--portfolio-font-en); }
-.canvasflow-detail a:focus-visible { outline: 2px solid #93b7ff; outline-offset: 5px; border-radius: 3px; }
+
 @media (max-width: 900px) {
   .canvasflow-detail { width: calc(100% - 48px); }
   .canvasflow-main { padding-top: 32px; }
@@ -66,4 +72,25 @@ html.dark .canvasflow-tags li { border-color: rgb(168 196 255 / 28%); background
   .canvasflow-scroll-cue { margin: 32px auto; }
   .canvasflow-document > h2 { font-size: 22px; }
   .canvasflow-document-placeholder p { font-size: 16px; }
+}
+
+/* Same type tokens as the static shell; its distinct content form stays intact. */
+.canvasflow-header a {
+  font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed);
+}
+.canvasflow-header a:first-child {
+  font: var(--type-weight-title-en) var(--type-brand-size)/var(--type-brand-leading) var(--portfolio-font-en);
+  letter-spacing: var(--type-tracking-default);
+}
+.canvasflow-document-placeholder > span {
+  font: var(--type-weight-body) var(--type-caption-size)/var(--type-caption-leading) var(--portfolio-font-en);
+}
+
+.canvasflow-document > h2 {
+  font-size: var(--type-reading-heading-size);
+  font-weight: var(--type-weight-title-zh);
+  line-height: var(--type-reading-heading-leading);
+}
+.canvasflow-document-placeholder p {
+  font: var(--type-weight-body) var(--type-small-size)/var(--type-small-leading) var(--portfolio-font-mixed);
 }

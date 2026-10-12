@@ -1,4 +1,6 @@
 /* Local font names only: this prototype does not bundle or fetch new font files. */
+@import url("/portfolio-tokens.css");
+@import url("/portfolio-components.css");
 @font-face {
   font-family: "Portfolio DIN";
   src: local("DIN-Regular");
@@ -34,6 +36,13 @@
   font-weight: 500;
 }
 
+@font-face {
+  font-family: "Portfolio PingFang";
+  src: local("PingFangSC-Semibold");
+  font-style: normal;
+  font-weight: 600;
+}
+
 :root {
   --portfolio-font-en: "Portfolio DIN", "DIN", "DIN Alternate", "DIN Condensed", Arial, sans-serif;
   --portfolio-font-zh: "Portfolio PingFang", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
@@ -42,6 +51,45 @@
   --font-sans: var(--portfolio-font-en);
   --font-mono: var(--portfolio-font-en);
   --font-mono-2: var(--portfolio-font-en);
+
+  /* Typography V1: role tokens, not global element overrides. */
+  --type-weight-body: 400;
+  --type-weight-label: 500;
+  --type-weight-title-zh: 600;
+  --type-weight-title-en: 700;
+  --type-weight-contact-display: 900;
+  --type-body-size: 16px;
+  --type-body-leading: 28px;
+  --type-small-size: 14px;
+  --type-small-leading: 21px;
+  --type-caption-size: 12px;
+  --type-caption-leading: 18px;
+  --type-tag-size: 13px;
+  --type-tag-leading: 18px;
+  --type-button-size: 16px;
+  --type-button-leading: 24px;
+  --type-compact-size: 14px;
+  --type-compact-leading: 21px;
+  --type-navigation-size: 16px;
+  --type-navigation-leading: 24px;
+  --type-brand-size: 16px;
+  --type-brand-leading: 24px;
+  --type-tracking-default: normal;
+  /* Semantic palette available for gradual adoption. Existing colors stay intact. */
+  --type-color-primary: currentColor;
+  --type-color-secondary: color-mix(in srgb, currentColor 74%, transparent);
+  --type-color-muted: color-mix(in srgb, currentColor 60%, transparent);
+  --type-color-label-strong: color-mix(in srgb, currentColor 90%, transparent);
+  --type-color-translation: color-mix(in srgb, currentColor 50%, transparent);
+}
+
+@media (max-width: 767px) {
+  :root {
+    --type-button-size: 14px;
+    --type-button-leading: 21px;
+    --type-brand-size: 14px;
+    --type-brand-leading: 21px;
+  }
 }
 
 /* The two introduction paragraphs contain both Chinese and Latin/numeric glyphs. */
@@ -60,4 +108,44 @@ header > div:first-child > div > button,
 .portfolio-settings-panel button,
 .portfolio-settings-title {
   font-weight: 500;
+}
+
+/* Stage 2: hierarchy roles. Stage 1 families and public tokens stay unchanged. */
+:root {
+  --type-body-large-size: 20px;
+  --type-body-large-leading: 33px;
+  --type-profile-heading-size: 32px;
+  --type-profile-heading-leading: 43.2px;
+  --type-section-label-size: 18px;
+  --type-section-label-leading: 27px;
+  --type-content-heading-size: 18px;
+  --type-content-heading-leading: 27px;
+  --type-reading-heading-size: 24px;
+  --type-reading-heading-leading: 36px;
+  --type-menu-display-size: 40px;
+  --type-menu-display-leading: 56px;
+}
+@media (min-width: 1200px) and (max-height: 820px) {
+  :root {
+    --type-body-large-size: 18px;
+    --type-body-large-leading: 28px;
+    --type-profile-heading-size: 28px;
+    --type-profile-heading-leading: 37.8px;
+  }
+}
+@media (max-width: 1199px) {
+  :root {
+    --type-profile-heading-size: 24px;
+    --type-profile-heading-leading: 32.4px;
+  }
+}
+@media (max-width: 767px) {
+  :root {
+    --type-body-large-size: 18px;
+    --type-body-large-leading: 28px;
+    --type-section-label-size: 16px;
+    --type-section-label-leading: 24px;
+    --type-menu-display-size: 36px;
+    --type-menu-display-leading: 50.4px;
+  }
 }

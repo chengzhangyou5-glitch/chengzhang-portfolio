@@ -1,0 +1,83 @@
+/* Shared first-screen composition. Loaded only by the four project routes. */
+.project-overview { --overview-muted: color-mix(in srgb, currentColor 62%, transparent); --overview-line: color-mix(in srgb, currentColor 14%, transparent); --overview-glass-tint: color-mix(in srgb, var(--color-page) 12%, transparent); --overview-glass-sheen: color-mix(in srgb, var(--color-reading-ink) 4%, transparent); --overview-glass-highlight: color-mix(in srgb, var(--color-reading-ink) 10%, transparent); padding: 40px 0 0; scroll-margin-top: 24px; }
+.project-overview *, .project-overview *::before, .project-overview *::after { box-sizing: border-box; }
+.project-overview-top { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 64px; align-items: center; }
+.project-overview-identity { min-width: 0; min-height: 190px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
+.project-overview h1 { margin: 0; font: var(--type-weight-title-zh) clamp(44px, 4.25vw, 72px)/1.12 var(--portfolio-font-mixed); letter-spacing: -.025em; text-wrap: balance; }
+.project-overview h1[lang="en"] { font-family: var(--portfolio-font-en); font-weight: 700; letter-spacing: -.035em; }
+.project-overview-subtitle { margin: 10px 0 0; color: var(--overview-muted); font-size: 16px; line-height: 1.55; }
+.project-overview-profile { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 20px 36px; }
+.project-overview-meta { display: flex; flex-wrap: wrap; gap: 16px 42px; margin: 0; }
+.project-overview-meta div { min-width: 0; }
+.project-overview-meta dt { margin-bottom: 7px; color: var(--overview-muted); font-size: 13px; line-height: 1.5; }
+.project-overview-meta dd { margin: 0; font-size: 17px; line-height: 1.5; font-weight: 500; }
+.project-overview-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; margin: 0 0 2px; list-style: none; }
+.project-overview-tags li { border: 1px solid var(--glass-tag-border); border-radius: var(--radius-pill); padding: 5px 12px; font-size: 12px; line-height: 1.4; color: inherit; background: linear-gradient(145deg, var(--glass-tag-top), var(--glass-tag-bottom)); box-shadow: inset 0 1px var(--glass-tag-highlight); }
+.project-overview-cover { margin: 0; min-width: 0; }
+.project-overview-cover img { display: block; width: 100%; height: auto; border-radius: var(--radius-cover); box-shadow: 0 12px 32px rgb(4 12 28 / 20%); }
+.project-overview-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); margin-top: var(--space-8); }
+/* A single neutral material for all four cards. Keep tint/blur independent of
+   row, hover and scroll; the existing live background and cursor remain visible. */
+.project-overview-note { position: relative; z-index: 1; min-width: 0; min-height: 142px; padding: 22px 26px; border: 1px solid var(--overview-line); border-radius: var(--radius-card); background: linear-gradient(145deg, var(--overview-glass-sheen), transparent), var(--overview-glass-tint); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: inset 0 1px var(--overview-glass-highlight); }
+.project-overview-note h2 { margin: 0 0 10px; font: 600 16px/1.5 var(--portfolio-font-zh); color: color-mix(in srgb, currentColor 82%, transparent); }
+.project-overview-note p, .project-overview-note ul { margin: 0; font-size: 16px; line-height: 1.75; color: color-mix(in srgb, currentColor 92%, transparent); text-wrap: pretty; }
+.project-overview-note ul { padding-left: 18px; }
+.project-overview-note li::marker { color: var(--overview-muted); font-size: 10px; }
+.project-overview-note li + li { margin-top: 3px; }
+.project-overview-cue { display: flex; align-items: center; justify-content: center; gap: 10px; width: fit-content; margin: 32px auto 40px; font-size: 12px; line-height: 1.5; color: var(--overview-muted) !important; text-decoration: none; }
+.project-overview-cue svg { width: 20px; height: 20px; flex: none; }
+.project-overview-cue:hover { color: inherit !important; }
+
+.canvasflow-main { padding-top: 0; }
+@media (max-width: 1100px) {
+  .project-overview-top { grid-template-columns: minmax(0, 1fr) 224px; gap: 32px; }
+  .project-overview h1 { font-size: clamp(38px, 5vw, 56px); }
+  .project-overview-profile { gap: 20px; }
+  .project-overview-meta { gap: 16px 28px; }
+  .project-overview-meta dd { font-size: 15px; }
+  .project-overview-note { padding: 20px; }
+  .project-overview-note p, .project-overview-note ul { font-size: 15px; }
+}
+
+/* Shared first-stage typography; no geometry or display-title size overrides. */
+.project-overview-meta dt {
+  font: var(--type-weight-body) var(--type-caption-size)/var(--type-caption-leading) var(--portfolio-font-mixed);
+}
+.project-overview-meta dd {
+  font: var(--type-weight-label) var(--type-small-size)/var(--type-small-leading) var(--portfolio-font-mixed);
+}
+.project-overview-tags li {
+  font: var(--type-weight-label) var(--type-tag-size)/var(--type-tag-leading) var(--portfolio-font-mixed);
+}
+.project-overview-note p, .project-overview-note ul {
+  font: var(--type-weight-body) var(--type-body-size)/var(--type-body-leading) var(--portfolio-font-mixed);
+}
+.project-overview-cue {
+  font: var(--type-weight-body) var(--type-caption-size)/var(--type-caption-leading) var(--portfolio-font-mixed);
+}
+@media (max-width: 767px) {
+  .project-overview { padding-top: 28px; }
+  .project-overview-top { grid-template-columns: 1fr; gap: 24px; }
+  .project-overview-identity { min-height: 0; gap: 24px; }
+  .project-overview h1 { font-size: clamp(32px, 9vw, 46px); }
+  .project-overview-subtitle { font-size: 14px; margin-top: 8px; }
+  .project-overview-profile { align-items: flex-start; gap: 16px; }
+  .project-overview-meta { gap: 16px 24px; }
+  .project-overview-meta dt { margin-bottom: 4px; }
+  .project-overview-tags { flex-basis: 100%; margin: 0; }
+  .project-overview-cover { width: min(320px, 100%); }
+  .project-overview-cover img { border-radius: var(--radius-cover-mobile); }
+  .project-overview-notes { grid-template-columns: 1fr; gap: var(--space-3); margin-top: var(--space-6); }
+  .project-overview-note { min-height: 0; padding: 18px 20px; border-radius: var(--radius-card-mobile); }
+  .project-overview-note h2 { font-size: 14px; margin-bottom: 8px; }
+  .project-overview-cue { margin: 28px auto 32px; }
+}
+
+/* A content heading sits above Body without borrowing its size. */
+.project-overview-note h2 {
+  font-size: var(--type-content-heading-size);
+  line-height: var(--type-content-heading-leading);
+}
+.project-overview-subtitle {
+  font: var(--type-weight-body) var(--type-small-size)/var(--type-small-leading) var(--portfolio-font-mixed);
+}

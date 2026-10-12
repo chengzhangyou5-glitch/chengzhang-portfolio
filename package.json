@@ -2,6 +2,11 @@
   "name": "chengzhang-portfolio",
   "private": true,
   "scripts": {
+    "build:production": "node tools/build-production.mjs",
+    "build:performance": "node tools/build-performance.mjs",
+    "build:foundation": "node tools/build-design-foundation.mjs",
+    "build:stage-a": "node tools/build-stage-a.mjs",
+    "test:theme": "node --test tests/portfolio-theme.test.mjs",
     "build:feedback": "node tools/build-feedback.mjs",
     "build:experience": "node tools/build-work-experience.mjs",
     "build:contact": "node tools/build-contact.mjs",
@@ -14,6 +19,10 @@
     "preview:works": "node tools/preview-selected-works.mjs",
     "build:projects": "node tools/build-project-details.mjs",
     "build:canvasflow": "node tools/build-canvasflow-detail.mjs",
+    "build:readiness": "node tools/build-page-readiness.mjs",
+    "build:project-entry": "node tools/build-project-entry.mjs",
+    "build:residue": "node tools/build-sticker-residue.mjs",
+    "build:history-startup": "node tools/build-history-startup.mjs",
     "build": "node tools/build-site.mjs",
     "dev": "node tools/preview-selected-works.mjs",
     "preview": "node tools/preview-release.mjs"
@@ -24,6 +33,6 @@
     "react-dom": "19.2.0",
     "esbuild": "0.25.12"
   },
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module"
 }

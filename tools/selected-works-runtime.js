@@ -2,19 +2,19 @@
 // Existing resume data is retained. Entry overviews are separate from detail-page notes.
 const portfolioSelectedProjects = [
   {
-    id: "canvasflow-art-preview", title: "CanvasFlow AI 油画 / 装饰画高保真展示项目", shortTitle: "CanvasFlow AI",
-    titleLines: ["CanvasFlow AI", "油画 / 装饰画", "高保真展示项目"],
-    type: "产品设计 / AI 工作流", tags: ["场景生成", "商品保真", "高保真原型"], period: "待补充",
-    role: "产品设计与原型实现", cover: "/assets/works/canvasflow-preview.png", width: 1440, height: 900, color: "#6861de",
-    overview: "面向装饰画商品展示，将真实画作放入不同空间，并通过对比与保真检查，保留图案、色彩与画框的一致性。",
+    id: "canvasflow-art-preview", title: "Vibe Coding生成产品实践", shortTitle: "Vibe Coding生成产品实践",
+    titleLines: ["Vibe Coding", "生成产品实践"],
+    type: "产品设计 / AI 工作流", tags: ["高保真原型"], period: "2026.08 — 2026.09",
+    role: "产品设计与原型实现", cover: "/assets/works/canvasflow-vibe-coding.png", width: 3840, height: 2010, color: "#6861de",
+    overview: "以 CanvasFlow AI 为实践载体，围绕 Vibe Coding 工作流，探索从需求拆解、产品设计到 AI 协同开发与迭代验证的完整链路，呈现人机协作下的产品落地过程。",
     background: "装饰画场景图需要兼顾空间表现与商品真实性。项目围绕受约束的场景生成、可解释的商品保真检查和人工确认后导出展开。",
     responsibility: "梳理产品流程、交互方案与高保真原型，将场景创建、结果对比和保真检查串成连续体验。",
     work: "设计原画上传、尺寸与场景设置、挂画区域选择及生成状态；在结果页提供方案对比，并围绕图案、颜色、画框、比例、空间尺度与挂画位置组织保真检查。",
-    coverCaption: "CanvasFlow AI 项目现有原型截图。正式主视觉与项目时间待补充确认。"
+    coverCaption: "Vibe Coding 项目主视觉。"
   },
   {
     id: "aigc-design-efficiency", title: "AIGC 设计提效项目", shortTitle: "AIGC 设计提效",
-    type: "AIGC / 工作流", tags: ["模型训练", "资源体系", "流程优化"], period: "2025.04 — 2025.06",
+    type: "AIGC / 工作流", tags: ["模型训练", "资源体系", "流程优化"], period: "2025.05 — 2025.06",
     role: "AIGC 设计师", cover: "/assets/works/aigc-efficiency.png", width: 1712, height: 964, color: "#6d465d",
     overview: "探索 AI 在运营设计中的实际应用，通过模型训练、资源整理与效果验证，提升素材生成质量和复用效率。",
     background: "面向运营素材生产，探索 AI 在设计流程中的实际应用，提升生成质量与素材复用效率。",
@@ -23,7 +23,7 @@ const portfolioSelectedProjects = [
   },
   {
     id: "fliggy-lele-run", title: "飞猪乐乐跑运营活动", shortTitle: "飞猪乐乐跑",
-    type: "运营设计 / AIGC", tags: ["活动视觉", "IP 场景", "素材优化"], period: "2025.02 — 2025.04",
+    type: "运营设计 / AIGC", tags: ["活动视觉", "IP 场景"], period: "2025.03 — 2025.05",
     role: "AIGC 设计师", cover: "/assets/works/fliggy-lele-run.png", width: 1712, height: 964, color: "#ab6744",
     overview: "围绕飞猪乐乐跑运营活动，参与 IP 形象、活动场景与视觉素材设计，结合 AIGC 工具提升素材生产效率。",
     background: "围绕飞猪乐乐跑活动，梳理玩法与竞品视觉，建立统一的活动视觉基调。",
@@ -32,7 +32,7 @@ const portfolioSelectedProjects = [
   },
   {
     id: "lexin-health-app", title: "乐心健康运动 APP", shortTitle: "乐心健康运动 APP",
-    type: "产品设计 / UI·UX", tags: ["用户研究", "交互设计", "设计系统"], period: "2024.04 — 2024.12",
+    type: "产品设计 / UI·UX", typeTags: ["UI·UX"], tags: ["用户研究", "交互设计", "设计系统"], period: "2024.07 — 2024.12",
     role: "UX 设计师", cover: "/assets/works/lexin-health-app.png", width: 1712, height: 1160, color: "#436b8f",
     overview: "围绕运动与健康数据的核心体验，梳理用户需求和关键路径，优化首页、运动页及数据详情的交互与视觉。",
     background: "以健康类 APP 的核心体验为切入点，梳理首页、运动与健康数据中的使用痛点。",
@@ -42,6 +42,21 @@ const portfolioSelectedProjects = [
 ];
 const portfolioWorksLastIndex = portfolioSelectedProjects.length - 1;
 const portfolioWorksTotal = String(portfolioSelectedProjects.length).padStart(2, "0");
+const portfolioWorksResponsive = __PORTFOLIO_WORKS_RESPONSIVE__;
+
+function portfolioWorksCoverSource(project, ready) {
+  if (!ready) return {};
+  const name = project.cover.split("/").pop().replace(/\.png$/, "");
+  const variants = portfolioWorksResponsive[name]?.variants;
+  return variants?.length ? { src: variants[1]?.src || variants[0].src,
+    srcSet: variants.map(item => `${item.src} ${item.width}w`).join(", "), sizes: "100vw" }
+    : { src: project.cover };
+}
+function portfolioWorksCoverFallback(event, project) {
+  const image = event.currentTarget;
+  if (!image.currentSrc.endsWith(".webp")) return;
+  image.removeAttribute("srcset"); image.src = project.cover;
+}
 
 function portfolioRememberProject(id) {
   try {
@@ -58,7 +73,7 @@ function PortfolioWorksCopy({ project, index, active }) {
       e.jsx("p", { className: "works-type", children: project.type }),
       e.jsx("h3", { className: "works-name", "aria-label": project.title, children: project.titleLines ? project.titleLines.map(line => e.jsx("span", { className: "works-name-line", children: line }, line)) : project.title }),
       e.jsx("ul", { className: "works-tags", children: [
-        ...project.type.split(" / ").map(tag => e.jsx("li", { className: "works-type-tag", children: tag }, "type:" + tag)),
+        ...(project.typeTags || project.type.split(" / ")).map(tag => e.jsx("li", { className: "works-type-tag", children: tag }, "type:" + tag)),
         ...project.tags.map(tag => e.jsx("li", { children: tag }, tag))
       ] }),
       e.jsxs("dl", { className: "works-meta", children: [
@@ -197,7 +212,7 @@ function PortfolioWorksPixelOutline({ project }) {
   });
 }
 
-function PortfolioWorksVisual({ project, active, onPointerMove }) {
+function PortfolioWorksVisual({ project, active, onPointerMove, resourceReady }) {
   return e.jsxs("a", {
     className: "works-visual", href: "/projects/" + project.id + "/", tabIndex: active ? 0 : -1,
     onClick: () => portfolioRememberProject(project.id),
@@ -216,7 +231,7 @@ function PortfolioWorksVisual({ project, active, onPointerMove }) {
     onPointerLeave: event => { ["--hover-x", "--hover-y", "--pointer-x", "--pointer-y"].forEach(name => event.currentTarget.style.removeProperty(name)); },
     children: [
       e.jsx(PortfolioWorksPixelOutline, { project }),
-      e.jsx("span", { className: "works-image-window", children: e.jsx("img", { src: project.cover, alt: project.title + "主视觉", width: project.width, height: project.height, decoding: "async", draggable: false }) }),
+      e.jsx("span", { className: "works-image-window", children: e.jsx("img", { ...portfolioWorksCoverSource(project, resourceReady), onError: event => portfolioWorksCoverFallback(event, project), alt: project.title + "主视觉", width: project.width, height: project.height, decoding: "async", draggable: false }) }),
       e.jsx("span", { className: "works-open", "aria-hidden": true, children: "查看项目 ↗" })
     ]
   });
@@ -344,26 +359,73 @@ function PortfolioSelectedWorks() {
   const host = i.useRef(null);
   const container = worksScrollEnv.useContainerEl();
   const loading = worksLoadingGate.useHomeLoadingGate();
+  const [resourceReady, setResourceReady] = i.useState(false);
+  i.useLayoutEffect(() => {
+    if (resourceReady || !host.current) return;
+    let returning = location.hash === "#featured-projects" || !!window.__portfolioReturnPresentation;
+    try { returning ||= !!sessionStorage.getItem("portfolio:works-return"); } catch {}
+    if (returning) { setResourceReady(true); return; }
+    const activate = () => {
+      setResourceReady(true); observer?.disconnect();
+      // Prepare the same silent PCM table before the stage, not during its first animation.
+      portfolioWorksPrepareRhythm(new URL("/bgm.mp3", location.href).href).catch(() => {});
+    };
+    const intent = event => {
+      const target = event.target?.closest?.('[data-portfolio-nav]');
+      if (["projects", "featured-projects", "experience"].includes(target?.dataset.portfolioNav)) activate();
+    };
+    if (typeof IntersectionObserver === "undefined") { setResourceReady(true); return; }
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) activate();
+    }, { rootMargin: `${Math.round(innerHeight)}px 0px` });
+    observer.observe(host.current);
+    document.addEventListener("pointerover", intent, { passive: true });
+    document.addEventListener("focusin", intent);
+    document.addEventListener("click", intent, { passive: true });
+    return () => {
+      observer.disconnect(); document.removeEventListener("pointerover", intent);
+      document.removeEventListener("focusin", intent); document.removeEventListener("click", intent);
+    };
+  }, [resourceReady, loading]);
   const [active, setActive] = i.useState(0);
   const activeRef = i.useRef(0);
   const cancelSettle = i.useRef(null);
   const [mobile, setMobile] = i.useState(false);
 
+  // Experience tags reveal a selected work in this document, without opening a detail route.
+  i.useEffect(() => {
+    const revealWork = event => {
+      const index = portfolioSelectedProjects.findIndex(project => project.id === event.detail?.projectId);
+      if (index < 0 || !host.current) return;
+      setResourceReady(true);
+      selectProject(index);
+    };
+    window.addEventListener("portfolio:select-work", revealWork);
+    return () => window.removeEventListener("portfolio:select-work", revealWork);
+  }, [container, mobile]);
+
   i.useEffect(() => {
     if (loading || !container || !host.current) return;
-    const back = performance.getEntriesByType("navigation")[0]?.type === "back_forward";
-    const returnId = sessionStorage.getItem("portfolio:works-return") || (back ? sessionStorage.getItem("portfolio:works-last") : null);
-    if (window.location.hash !== "#featured-projects" && !returnId) return;
-    const index = Math.max(0, portfolioSelectedProjects.findIndex(project => project.id === returnId));
-    const element = host.current;
-    const narrow = window.matchMedia("(max-width: 900px), (max-height: 620px)").matches;
-    const pinnedPhone = window.matchMedia("(min-width: 360px) and (max-width: 900px) and (min-height: 800px)").matches;
-    const reading = narrow && !pinnedPhone;
-    const target = reading && returnId ? element.querySelectorAll(".works-mobile-project")[index] : element;
-    const top = worksScrollEnv.getScrollTopPx() + target.getBoundingClientRect().top - container.getBoundingClientRect().top;
-    const travel = reading ? 0 : element.offsetHeight - worksScrollEnv.getViewportHeightPx();
-    worksScrollEnv.lenisScrollTo(top + travel * index / portfolioWorksLastIndex - (reading ? 90 : 0), { immediate: true });
-    sessionStorage.removeItem("portfolio:works-return");
+    const restoreReturn = () => {
+      const back = performance.getEntriesByType("navigation")[0]?.type === "back_forward";
+      const returnId = sessionStorage.getItem("portfolio:works-return") || (back ? sessionStorage.getItem("portfolio:works-last") : null);
+      if (window.location.hash !== "#featured-projects" && !returnId) return;
+      const index = Math.max(0, portfolioSelectedProjects.findIndex(project => project.id === returnId));
+      const element = host.current;
+      const narrow = window.matchMedia("(max-width: 900px), (max-height: 620px)").matches;
+      const pinnedPhone = window.matchMedia("(min-width: 360px) and (max-width: 900px) and (min-height: 800px)").matches;
+      const reading = narrow && !pinnedPhone;
+      const target = reading && returnId ? element.querySelectorAll(".works-mobile-project")[index] : element;
+      // Rectangles and scrollTop must come from the same presented DOM frame.
+      // Retain fractional height: paint() uses rect.height, not offsetHeight.
+      const top = container.scrollTop + target.getBoundingClientRect().top - container.getBoundingClientRect().top;
+      const travel = reading ? 0 : element.getBoundingClientRect().height - worksScrollEnv.getViewportHeightPx();
+      worksScrollEnv.lenisScrollTo(top + travel * index / portfolioWorksLastIndex - (reading ? 90 : 0), { immediate: true });
+      sessionStorage.removeItem("portfolio:works-return");
+    };
+    restoreReturn();
+    window.addEventListener("portfolio:history-return", restoreReturn);
+    return () => window.removeEventListener("portfolio:history-return", restoreReturn);
   }, [loading, container]);
 
   i.useEffect(() => {
@@ -406,6 +468,8 @@ function PortfolioSelectedWorks() {
       clearTimeout(settleTimer);
     };
     cancelSettle.current = () => { gesturePending = false; clearTimeout(settleTimer); };
+    const projectOpen = () => cancelSettle.current?.();
+    window.addEventListener('portfolio:project-open', projectOpen);
     const wheel = event => { if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) intent(Math.sign(event.deltaY)); };
     const touchStart = event => { touchY = event.touches.length === 1 ? event.touches[0].clientY : null; };
     const touchMove = event => {
@@ -523,6 +587,7 @@ function PortfolioSelectedWorks() {
       cancelAnimationFrame(frame);
       clearTimeout(settleTimer);
       cancelSettle.current = null;
+      window.removeEventListener('portfolio:project-open', projectOpen);
       delete element.dataset.stageActive;
       observer.disconnect(); resize.disconnect();
       scrollContainer.removeEventListener("scroll", scroll);
@@ -582,7 +647,7 @@ function PortfolioSelectedWorks() {
             e.jsx("div", { className: "works-deck", children: portfolioSelectedProjects.map((project, index) => e.jsx("div", {
               className: "works-plane", "data-project-id": project.id, "data-active": active === index, "aria-hidden": active !== index,
               style: { "--plane-y": `${index * 49}dvh`, "--plane-x": `${-index * 5.5}vw`, "--plane-z": `${-index * 50}px`, "--plane-scale": 1, "--plane-rotation": index === 0 ? "0deg" : "8deg", "--plane-yaw": `${index * -12}deg`, "--plane-opacity": index === 0 ? 1 : .2, "--plane-blur": index === 0 ? "0px" : "1.8px", "--plane-brightness": index === 0 ? 1 : .68, "--plane-edge-alpha": index === 0 ? 1 : 0 },
-              children: e.jsx(PortfolioWorksVisual, { project, active: active === index, onPointerMove: tilt })
+              children: e.jsx(PortfolioWorksVisual, { project, active: active === index, onPointerMove: tilt, resourceReady })
             }, project.id)) })
           ] }),
           e.jsx("div", { className: "works-right", children: portfolioSelectedProjects.map((project, index) => e.jsx(PortfolioWorksDescription, { project, active: active === index }, project.id)) })
@@ -593,7 +658,7 @@ function PortfolioSelectedWorks() {
       e.jsx("div", { className: "works-mobile-list", children: portfolioSelectedProjects.map((project, index) => e.jsxs("section", {
         className: "works-mobile-project", "aria-label": project.title, children: [
           e.jsx(PortfolioWorksCopy, { project, index, active: true }),
-          e.jsx("a", { className: "works-mobile-visual", href: "/projects/" + project.id + "/", onClick: () => portfolioRememberProject(project.id), "aria-label": "查看" + project.title + "项目详情", children: e.jsx("img", { src: project.cover, alt: project.title + "主视觉", width: project.width, height: project.height, loading: "lazy", decoding: "async" }) }),
+          e.jsx("a", { className: "works-mobile-visual", href: "/projects/" + project.id + "/", onClick: () => portfolioRememberProject(project.id), "aria-label": "查看" + project.title + "项目详情", children: e.jsx("img", { ...portfolioWorksCoverSource(project, resourceReady), onError: event => portfolioWorksCoverFallback(event, project), alt: project.title + "主视觉", width: project.width, height: project.height, loading: "lazy", decoding: "async" }) }),
           e.jsx(PortfolioWorksDescription, { project, active: true })
         ]
       }, project.id)) })

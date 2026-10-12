@@ -1,11 +1,11 @@
 .portfolio-about {
-  --about-secondary: rgba(var(--label, 19, 29, 62), .74);
-  --about-english: rgba(var(--label, 19, 29, 62), .50);
-  --about-icon: #4268a6;
-  --about-orb-border: rgb(75 110 172 / 28%);
-  --about-orb-top: rgb(255 255 255 / 42%);
-  --about-orb-bottom: rgb(148 186 240 / 12%);
-  --about-orb-highlight: rgb(255 255 255 / 80%);
+  --about-secondary: var(--color-text-secondary);
+  --about-english: var(--color-text-translation);
+  --about-icon: var(--glass-soft-icon);
+  --about-orb-border: var(--glass-soft-border);
+  --about-orb-top: var(--glass-soft-top);
+  --about-orb-bottom: var(--glass-soft-bottom);
+  --about-orb-highlight: var(--glass-soft-highlight);
   --about-float: 3px;
   position: relative;
   display: grid;
@@ -18,14 +18,14 @@
   font-family: var(--portfolio-font-mixed);
 }
 .dark .portfolio-about {
-  --about-icon: #b6d2ff;
-  --about-orb-border: rgb(168 196 255 / 28%);
-  --about-orb-top: rgb(69 99 166 / 24%);
-  --about-orb-bottom: rgb(24 39 85 / 14%);
-  --about-orb-highlight: rgb(217 232 255 / 25%);
+  --about-icon: var(--glass-soft-icon);
+  --about-orb-border: var(--glass-soft-border);
+  --about-orb-top: var(--glass-soft-top);
+  --about-orb-bottom: var(--glass-soft-bottom);
+  --about-orb-highlight: var(--glass-soft-highlight);
 }
 .about-main { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: start; min-height: 0; }
-.about-photo { grid-column: 1 / 4; width: min(100%, 380px, calc((100dvh - 396px) * 1246 / 1578)); margin: 0; border-radius: 12px; overflow: hidden; }
+.about-photo { grid-column: 1 / 4; width: min(100%, 380px, calc((100dvh - 396px) * 1246 / 1578)); margin: 0; border-radius: var(--radius-media); overflow: hidden; }
 .portfolio-about .portfolio-portrait { width: 100%; aspect-ratio: 1246 / 1578; border-radius: inherit; }
 .about-information { position: relative; isolation: isolate; grid-column: 5 / -1; min-width: 0; padding-top: 6px; }
 /* Keep the height cap; offset the SVG's centered letterboxing to align its visible left edge. */
@@ -62,7 +62,7 @@
 .about-skill-group { display: grid; grid-template-columns: repeat(var(--about-skill-count, 8), minmax(0, 1fr)); align-items: start; column-gap: var(--about-skill-gap); flex: 0 0 auto; width: max(100cqw, calc(var(--about-skill-count, 8) * (var(--about-skill-width) + var(--about-skill-gap)))); margin: 0; padding: 0 var(--about-skill-gap) 0 0; list-style: none; }
 .about-skill-item { display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 0; animation: about-skill-wave 6.8s ease-in-out infinite; animation-delay: var(--about-wave-delay, 0s); animation-play-state: paused; }
 .portfolio-about[data-motion-active="true"] .about-skill-item { animation-play-state: running; will-change: transform; }
-.about-skill-orb { display: grid; place-items: center; width: 68px; height: 68px; flex: 0 0 auto; border: 1px solid var(--about-orb-border); border-radius: 50%; background: linear-gradient(145deg, var(--about-orb-top), var(--about-orb-bottom)); box-shadow: inset 0 1px 0 var(--about-orb-highlight), 0 5px 16px rgb(11 25 68 / 10%); color: var(--about-icon); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.about-skill-orb { display: grid; place-items: center; width: 68px; height: 68px; flex: 0 0 auto; border: 1px solid var(--about-orb-border); border-radius: var(--radius-orb); background: linear-gradient(145deg, var(--about-orb-top), var(--about-orb-bottom)); box-shadow: var(--glass-soft-elevated-shadow); color: var(--about-icon); backdrop-filter: blur(var(--glass-blur-soft)); -webkit-backdrop-filter: blur(var(--glass-blur-soft)); }
 .about-skill-orb svg { width: 28px; height: 28px; stroke-width: 1.75; }
 .about-skill-label { font-family: var(--portfolio-font-mixed); font-size: 16px; font-weight: 500; line-height: 1.5; white-space: nowrap; color: rgba(var(--label, 19, 29, 62), .90); }
 @keyframes about-skill-wave { 0%, 100% { transform: translate3d(0, calc(-1 * var(--about-skill-wave)), 0); } 50% { transform: translate3d(0, var(--about-skill-wave), 0); } }
@@ -108,4 +108,26 @@
   .about-skills::-webkit-scrollbar { display: none; }
   .about-skill-track, .about-skill-item { animation: none; transform: none !important; will-change: auto !important; }
   .about-skill-group[aria-hidden="true"] { display: none; }
+}
+
+/* School and design direction share a level; name, translation and margins stay. */
+#about .about-school, #about .about-focus {
+  font-size: var(--type-profile-heading-size);
+  font-weight: var(--type-weight-label);
+  line-height: var(--type-profile-heading-leading);
+}
+#about .about-introduction p {
+  font-size: var(--type-body-large-size);
+  font-weight: var(--type-weight-body);
+  line-height: var(--type-body-large-leading);
+}
+
+/* Compact mobile stack leaves the unchanged skill wave above the fixed HUD. */
+@media (max-width: 767px) {
+  .portfolio-about { gap: var(--space-5); padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+  .about-main { gap: var(--space-6); }
+  .about-photo { width: min(44vw, 192px, calc(max(144px, 100dvh - 550px - var(--fixed-controls-reserve)) * 1246 / 1578)); }
+  .about-name { margin-bottom: var(--space-4); }
+  #about .about-school { margin-bottom: var(--space-3); }
+  .about-skills { align-items: flex-start; padding-top: var(--space-3); padding-bottom: var(--fixed-controls-reserve); }
 }

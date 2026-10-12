@@ -36,6 +36,10 @@
     drop-shadow(0 6px 12px rgba(8, 12, 32, .24));
 }
 
+/* New originals keep their full aspect ratio; corners frame the photo itself. */
+.personal-world-card[data-raw-photo="true"] { display: grid; place-items: center; }
+.personal-world-card[data-raw-photo="true"] img { height: auto; max-height: 100%; border-radius: 14px; }
+
 @media (max-width: 1023px) {
   .personal-world { --world-inset-x: 16px; --world-inset-y: 72px; }
   .personal-world-card { width: clamp(182px, 25.5vw, 257px); height: min(34dvh, 321px); }

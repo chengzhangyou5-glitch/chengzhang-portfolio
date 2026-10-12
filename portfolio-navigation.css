@@ -1,4 +1,21 @@
 /* The original labels retain their position, typography, and interaction. */
+.portfolio-menu-trigger { appearance: none; border: 0; background: transparent; color: inherit; }
+
+header:not(.canvasflow-header):not(.project-header) > div:first-child a {
+  font: var(--type-weight-title-en) var(--type-brand-size)/var(--type-brand-leading) var(--portfolio-font-en);
+  letter-spacing: var(--type-tracking-default);
+}
+header .portfolio-nav-item {
+  font: var(--type-weight-label) var(--type-navigation-size)/var(--type-navigation-leading) var(--portfolio-font-mixed);
+}
+/* The full-screen menu keeps its display size and rhythm; only family/weight change. */
+.portfolio-nav-menu .portfolio-nav-item {
+  font-family: var(--portfolio-font-mixed);
+  font-weight: var(--type-weight-label);
+}
+header:not(.canvasflow-header):not(.project-header) > div:last-child {
+  font-family: var(--portfolio-font-mixed);
+}
 header .portfolio-nav-item,
 .portfolio-nav-menu .portfolio-nav-item {
   position: relative;
@@ -32,3 +49,21 @@ header .portfolio-nav-item[aria-current="location"]::after,
     transition: none;
   }
 }
+
+/* Full-screen menu is an overlay display role, not the small Navigation token. */
+.portfolio-nav-menu {
+  font: var(--type-weight-label) var(--type-menu-display-size)/var(--type-menu-display-leading) var(--portfolio-font-mixed);
+}
+.portfolio-nav-menu .portfolio-nav-item {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+@media (max-width: 767px) {
+  header:not(.canvasflow-header):not(.project-header) > div:nth-child(2) { padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom, 0px)); }
+  header [aria-label="Scroll to top"] { bottom: env(safe-area-inset-bottom, 0px); }
+}
+
+/* Work-experience active row only; graphical tags keep their original palette. */
+.portfolio-experience { --experience-accent: #009DFF; }
+.dark .portfolio-experience { --experience-accent: #009DFF; }

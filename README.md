@@ -1,10 +1,11 @@
-# 游承樟 · 个人作品集
+# 游承樟｜设计作品集
 
-当前开发版的静态网站快照，包含首页、工作经历、精选项目、About、个人世界及 Contact。CanvasFlow 详情采用最新版四块信息布局。
+2026-10-13 已验收主项目快照，包含首页、工作经历、精选项目、About、个人世界、Contact、四个共用设计外壳的项目详情及当前 PDF 阅读资源。
 
 - 主站：https://youchengzhang.netlify.app/
 - 固定 PDF 入口：https://youchengzhang.netlify.app/portfolio
-- `/portfolio` 保留 Coming Soon，等待最终整本 PDF；项目详情内的已有 PDF 是旧版，后续需替换。
+- `/portfolio` 保留原短地址，现打开最新提供的 49 页整本作品集 PDF。联系弹窗的简历和作品集入口均为新标签页查看。
+- 浏览器标签页首页为「游承樟｜设计作品集」，详情为「项目名｜游承樟」；图标为蓝色 Y。
 - GitHub：chengzhangyou5-glitch/chengzhang-portfolio
 
 ## 开发和发布
@@ -16,7 +17,7 @@ npm run build
 npm run preview
 ```
 
-开发服务器默认 8772，构建预览默认 8776。Netlify 从 main 分支执行 `npm run build`，发布 `dist/`。构建仅打包当前审核文件，不擅自重建各模块。
+开发服务器默认 8772，构建预览默认 8776。生产构建执行 `npm run build`，发布 `dist/`。构建使用最新主项目的生产导出器，只打包当前审核文件、不重新生成页面或 PDF，排除本地开发反馈工具和测试素材。
 
 - 修改 CanvasFlow：`tools/canvasflow-detail-content.mjs`、`portfolio-canvasflow.css`，执行 `npm run build:canvasflow`。
 - 其他详情页与 PDF：参见 `PROJECT-DETAILS.md`。

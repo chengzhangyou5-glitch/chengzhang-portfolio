@@ -123,14 +123,15 @@ function PortfolioWorksRhythm({ host }) {
     const element = host.current;
     if (!element) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0, disposed = false, previousTime = 0;
+    let frame = 0, disposed = false, previousTime = performance.now();
     let player = null, table = null, failed = false, preparing = false;
-    let rhythmSource = "", visualTime = 0, playbackActive = false, clockSwitchUntil = 0;
+    let rhythmSource = new URL("/bgm.mp3", window.location.href).href, visualTime = 0, playbackActive = false, clockSwitchUntil = 0;
     let currentOutline = null, reveal = 0, cellNodes = [], firstCell = null;
     const smoothed = { kick: 0, bass: 0, mid: 0, high: 0 };
     const paint = now => {
+      frame = 0;
       if (disposed) return;
-      frame = requestAnimationFrame(paint);
+      if (document.hidden) return;
       const elapsed = previousTime ? Math.max(0, (now - previousTime) / 1000) : 0;
       const dt = Math.min(.06, elapsed || .016);
       previousTime = now;
@@ -161,6 +162,7 @@ function PortfolioWorksRhythm({ host }) {
         reveal = 0;
         return;
       }
+      if (!reduced.matches) frame = requestAnimationFrame(paint);
       const distance = Math.abs(parseFloat(activePlane.style.getPropertyValue("--plane-y")) || 0);
       const targetReveal = portfolioWorksClamp((90 - distance) / 36);
       reveal = reduced.matches ? targetReveal : reveal + (targetReveal - reveal) * (1 - Math.exp(-dt / .075));
@@ -171,6 +173,7 @@ function PortfolioWorksRhythm({ host }) {
         portfolioWorksPrepareRhythm(source).then(result => {
           if (!disposed && source === rhythmSource) {
             table = result; element.dataset.rhythmOnsets = String(result.onsetCount);
+            wake();
           }
         }).catch(() => { if (!disposed && source === rhythmSource) failed = true; });
       }
@@ -221,8 +224,28 @@ function PortfolioWorksRhythm({ host }) {
         cell.node.style.setProperty("--cell-light", cell.light.toFixed(4));
       }
     };
-    frame = requestAnimationFrame(paint);
-    return () => { disposed = true; cancelAnimationFrame(frame); };
+    function wake() {
+      if (disposed) return;
+      if (document.hidden || element.dataset.stageActive !== "true") {
+        cancelAnimationFrame(frame); frame = 0;
+        if (currentOutline) currentOutline.dataset.visible = "false";
+        reveal = 0;
+        return;
+      }
+      // previousTime is retained: silent time advances across sleep, PCM uses the player clock.
+      if (!frame) frame = requestAnimationFrame(paint);
+    }
+    const observer = new MutationObserver(wake);
+    observer.observe(element, { attributes: true, attributeFilter: ["data-stage-active"] });
+    document.addEventListener("visibilitychange", wake);
+    window.addEventListener("resize", wake, { passive: true });
+    reduced.addEventListener("change", wake);
+    wake();
+    return () => {
+      disposed = true; cancelAnimationFrame(frame); observer.disconnect();
+      document.removeEventListener("visibilitychange", wake);
+      window.removeEventListener("resize", wake); reduced.removeEventListener("change", wake);
+    };
   }, [host]);
   return null;
 }

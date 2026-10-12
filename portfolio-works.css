@@ -85,22 +85,22 @@ html:has(.portfolio-works[data-stage-active="true"]) header span[class~="lg:fixe
 .works-progress::after { content: ""; display: block; width: 100%; height: 1px; background: currentColor; transform: scaleX(var(--works-progress)); transform-origin: left; }
 .works-mobile-list, .works-mobile-number { display: none; }
 .works-neighbor { display: none; }
-.portfolio-works a:focus-visible, .portfolio-works button:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+
 
 /* Desktop sketch: one shared grid and contained-image top/bottom alignment. */
 @media (min-width: 901px) and (min-height: 621px) {
   .portfolio-works {
     --works-muted: rgba(var(--label), .54);
-    --works-tag-border: rgb(75 110 172 / 28%);
-    --works-tag-top: rgb(255 255 255 / 42%);
-    --works-tag-bottom: rgb(148 186 240 / 12%);
-    --works-tag-highlight: rgb(255 255 255 / 80%);
+    --works-tag-border: var(--glass-soft-border);
+    --works-tag-top: var(--glass-soft-top);
+    --works-tag-bottom: var(--glass-soft-bottom);
+    --works-tag-highlight: var(--glass-soft-highlight);
   }
   html.dark .portfolio-works {
-    --works-tag-border: rgb(168 196 255 / 28%);
-    --works-tag-top: rgb(69 99 166 / 24%);
-    --works-tag-bottom: rgb(24 39 85 / 14%);
-    --works-tag-highlight: rgb(217 232 255 / 25%);
+    --works-tag-border: var(--glass-soft-border);
+    --works-tag-top: var(--glass-soft-top);
+    --works-tag-bottom: var(--glass-soft-bottom);
+    --works-tag-highlight: var(--glass-soft-highlight);
   }
   .works-stage {
     --works-action-font: 24px;
@@ -122,9 +122,8 @@ html:has(.portfolio-works[data-stage-active="true"]) header span[class~="lg:fixe
   .works-meta div { display: block; }
   .works-meta dt { position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .works-meta dd { color: rgba(var(--label), .72); }
-  /* Reserve travel space: even opposite extrema leave 12px between rows, 12.5px between columns. */
-  .works-tags { order: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(100%, 23.25vw); margin: 0; gap: 20px 14px; font-size: 13px; line-height: 1.3; color: rgba(var(--label), .9); }
-  .portfolio-works .works-tags li { display: flex; align-items: center; min-height: 30px; padding: 4px 14px; border: 1px solid var(--works-tag-border); border-radius: 999px; background: linear-gradient(145deg, var(--works-tag-top), var(--works-tag-bottom)); box-shadow: inset 0 1px 0 var(--works-tag-highlight); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .works-tags { order: 2; display: flex; flex-wrap: wrap; width: min(100%, 23.25vw); margin: 0; gap: 8px; font-size: 13px; line-height: 1.3; color: rgba(var(--label), .9); }
+
   .works-tags li + li::before { content: none; }
   /* One slow current passes through the group; short phase offsets keep neighbours together. */
   .works-tags li:nth-child(1) { --tag-float-delay: -1.6s; --tag-drift-delay: -4.8s; }
@@ -267,6 +266,71 @@ html:has(.portfolio-works[data-stage-active="true"]) header span[class~="lg:fixe
   .works-cover-cursor, .works-cover-cursor-content { transition: none; }
   .portfolio-works .works-copy, .portfolio-works .works-description, .portfolio-works .works-visual, .portfolio-works .works-open, .portfolio-works .works-detail-link span { transition: none; transform: none; }
   .portfolio-works .works-visual:hover, .portfolio-works .works-visual:focus-visible, .works-mobile-visual img { transform: none; }
+}
+
+/* Shared content-sized capability labels for all four Selected Works entries. */
+.portfolio-works .works-tags {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-start;
+  gap: var(--space-2); font: var(--type-weight-label) var(--type-tag-size)/var(--type-tag-leading) var(--portfolio-font-mixed);
+  color: rgba(var(--label), .9);
+}
+
+.portfolio-works .works-tags li::before { content: none; }
+
+/* V1 changes only type: the current grid, pill geometry and display indices stay. */
+.portfolio-works .works-name {
+  font-family: var(--portfolio-font-mixed);
+  font-weight: var(--type-weight-title-zh);
+}
+.portfolio-works [data-project-id="canvasflow-art-preview"] .works-name-line:first-child {
+  font-family: var(--portfolio-font-en);
+  font-weight: var(--type-weight-title-en);
+}
+.portfolio-works .works-detail-link,
+.portfolio-works .works-cover-cursor,
+.portfolio-works .works-open {
+  font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed);
+}
+
+/* Stage 2: section context, lead paragraph and metadata have distinct roles. */
+.portfolio-works .works-heading h2 {
+  font-size: var(--type-section-label-size);
+  font-weight: var(--type-weight-title-zh);
+  line-height: var(--type-section-label-leading);
+}
+.portfolio-works .works-heading > div > span,
+.portfolio-works .works-total,
+.portfolio-works .works-meta dt {
+  font-size: var(--type-caption-size);
+  font-weight: var(--type-weight-body);
+  line-height: var(--type-caption-leading);
+}
+.portfolio-works .works-summary {
+  font-size: var(--type-body-large-size);
+  font-weight: var(--type-weight-body);
+  line-height: var(--type-body-large-leading);
+}
+.portfolio-works .works-meta dd, .portfolio-works .works-type {
+  font-size: var(--type-small-size);
+  font-weight: var(--type-weight-body);
+  line-height: var(--type-small-leading);
+}
+.portfolio-works .works-select button {
+  font-size: var(--type-caption-size);
+  font-weight: var(--type-weight-label);
+  line-height: var(--type-caption-leading);
+}
+@media (max-width: 900px), (max-height: 620px) {
+  .portfolio-works .works-meta dd, .portfolio-works .works-type {
+    font-size: var(--type-caption-size);
+    line-height: var(--type-caption-leading);
+  }
+}
+html.dark .portfolio-works .works-tags {
+  --works-tag-border: var(--glass-soft-border);
+  --works-tag-top: var(--glass-soft-top);
+  --works-tag-bottom: var(--glass-soft-bottom);
+  --works-tag-highlight: var(--glass-soft-highlight);
 }
 
 /* Detail destinations retain the full project notes and use the same source images. */

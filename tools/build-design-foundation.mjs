@@ -1,0 +1,25 @@
+import { readFile, writeFile } from "node:fs/promises";
+import { build, transform } from "esbuild";
+import { fileURLToPath } from "node:url";
+import { preserveGeneratedFormat } from "./preserve-generated-format.mjs";
+const root = new URL("../", import.meta.url);
+const file = new URL("_next/static/chunks/1ed7a178f7acd3df.js", root);
+let chunk = await readFile(file, "utf8");
+const originalChunk = chunk;
+const begin = chunk.indexOf('},90975,t=>{"use strict";');
+const end = chunk.indexOf('},23525,t=>', begin);
+if (begin < 0 || end < 0) throw new Error("Theme provider boundaries missing.");
+const source = await readFile(new URL("theme-provider-runtime.js", import.meta.url), "utf8");
+const provider = `},90975,t=>{"use strict";var e=t.i(22441),i=t.i(70089);let r=i.createContext(void 0);function s(){let value=i.useContext(r);if(!value)throw Error("useThemeMode must be used within ThemeModeProvider");return value;}\n/* PORTFOLIO_THEME_PROVIDER_START */\n${source}\n/* PORTFOLIO_THEME_PROVIDER_END */\nt.s(["ThemeModeProvider",()=>PortfolioThemeModeProvider,"useThemeMode",()=>s])`;
+chunk = chunk.slice(0, begin) + provider + chunk.slice(end);
+await transform(chunk, { loader: "js" });
+let html = await readFile(new URL("index.html", root), "utf8");
+if (!html.includes('<script src="/portfolio-theme.js"></script>')) html = html.replace('<head>', '<head><script src="/portfolio-theme.js"></script>');
+await writeFile(file, preserveGeneratedFormat(originalChunk, chunk));
+await writeFile(new URL("index.html", root), html);
+// Rebuild only the lightweight detail replay, retaining the homepage scene/shaders.
+const residueFile = new URL("portfolio-sticker-residue.js", root);
+const residueBefore = await readFile(residueFile, "utf8");
+const residueBuild = await build({ entryPoints: [fileURLToPath(new URL("sticker-residue-detail.js", import.meta.url))], bundle: true, write: false, format: "iife", target: "es2022" });
+await writeFile(residueFile, preserveGeneratedFormat(residueBefore, residueBuild.outputFiles[0].text));
+console.log("Built shared theme provider; existing shell and scene API retained.");

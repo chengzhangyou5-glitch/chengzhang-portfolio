@@ -1,0 +1,12 @@
+/* Approved detail template only. No homepage or global component overrides. */
+.project-detail-page .project-main, .project-detail-page .project-header-inner { width: min(1320px, 77.5vw); margin-inline: auto; }
+.project-detail-page .project-header-inner { border-bottom-color: color-mix(in srgb, var(--color-reading-ink) 12%, transparent); }
+.project-back { gap: 12px; }
+.project-back-icon { width: 22px; height: 22px; flex: none; transform: rotate(90deg); }
+.project-back:hover { opacity: .75; }
+.project-document { position: relative; padding-top: 0; border-top: 0; scroll-margin-top: 24px; }
+.project-document > h2 { margin: 0 0 28px; padding-bottom: 24px; border-bottom: 1px solid color-mix(in srgb, var(--color-reading-ink) 12%, transparent); font: var(--type-weight-title-zh) var(--type-reading-heading-size)/var(--type-reading-heading-leading) var(--portfolio-font-mixed); }
+.project-document > button[data-project-contact] { position: absolute; top: 4px; right: 0; display: inline-flex; align-items: center; gap: 16px; margin: 0; padding: 0 0 6px; border-bottom-color: color-mix(in srgb, var(--color-reading-ink) 24%, transparent); font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed); white-space: nowrap; }
+.project-document > button[data-project-contact]:hover { color: inherit; opacity: .75; border-bottom-color: color-mix(in srgb, var(--color-reading-ink) 24%, transparent); }
+@media (max-width: 900px) { .project-detail-page .project-main, .project-detail-page .project-header-inner { width: calc(100% - 48px); } }
+@media (max-width: 600px) { .project-detail-page .project-main, .project-detail-page .project-header-inner { width: calc(100% - 32px); } .project-back { gap: 6px; } .project-back-icon { width: 18px; height: 18px; } }

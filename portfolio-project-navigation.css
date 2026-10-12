@@ -1,0 +1,15 @@
+/* Same accepted Fliggy footer, shared by detail pages without changing their bodies. */
+.project-template-navigation { --project-footer-arrow-gap: 16px; display: flex; align-items: flex-start; justify-content: space-between; width: var(--project-reading-width, 100%); gap: 32px; margin: 88px auto 0; padding: 0 0 64px; border-top: 0; font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed); }
+.project-template-navigation a, .project-template-navigation a:last-child { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; color: inherit; text-decoration: none; }
+.project-template-navigation a:last-child { align-items: flex-end; text-align: right; }
+.project-template-navigation .project-footer-label { align-self: flex-start; margin-inline-start: calc(var(--type-button-size) + var(--project-footer-arrow-gap)); color: var(--project-muted, var(--detail-muted)); font: var(--type-weight-body) var(--type-caption-size)/var(--type-caption-leading) var(--portfolio-font-mixed); }
+.project-template-navigation a:last-child > .project-footer-label { align-self: flex-end; margin-inline-start: 0; margin-inline-end: calc(var(--type-button-size) + var(--project-footer-arrow-gap)); }
+.project-template-navigation .project-footer-destination { display: inline-flex; align-items: center; gap: var(--project-footer-arrow-gap); font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed); }
+.project-template-navigation .project-footer-arrow { flex: 0 0 var(--type-button-size); width: var(--type-button-size); text-align: center; }
+.project-template-navigation .project-footer-title { min-width: 0; }
+.project-template-navigation strong { font-weight: var(--type-weight-label); }
+.project-template-navigation a:hover { color: var(--project-blue, #a8c4ff); }
+@media (max-width: 767px) {
+  .project-template-navigation { --project-footer-arrow-gap: 10px; margin-top: 48px; padding-bottom: 40px; gap: 20px; }
+  .project-template-navigation a, .project-template-navigation a:last-child { gap: 12px; }
+}

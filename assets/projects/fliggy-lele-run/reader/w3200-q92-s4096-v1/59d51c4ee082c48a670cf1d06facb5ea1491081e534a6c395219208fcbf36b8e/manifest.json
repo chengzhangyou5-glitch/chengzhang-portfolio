@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "kind": "continuous-webp",
+  "sha256": "59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e",
+  "sourceUrl": "/assets/projects/fliggy-lele-run/project.pdf",
+  "spec": {
+    "width": 3200,
+    "quality": 92,
+    "method": 4,
+    "maxHeight": 4096,
+    "bleed": 2,
+    "version": "w3200-q92-s4096-v1"
+  },
+  "maxWidth": 3200,
+  "totalHeight": 62619,
+  "pages": [
+    {
+      "number": 1,
+      "width": 3200,
+      "height": 1800,
+      "offset": 0,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 1080.0
+    },
+    {
+      "number": 2,
+      "width": 3200,
+      "height": 3479,
+      "offset": 1800,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 2087.0
+    },
+    {
+      "number": 3,
+      "width": 3200,
+      "height": 1595,
+      "offset": 5279,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 957.0
+    },
+    {
+      "number": 4,
+      "width": 3200,
+      "height": 12499,
+      "offset": 6874,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 7499.0
+    },
+    {
+      "number": 5,
+      "width": 3200,
+      "height": 8870,
+      "offset": 19373,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 5322.0
+    },
+    {
+      "number": 6,
+      "width": 3200,
+      "height": 9347,
+      "offset": 28243,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 5608.0
+    },
+    {
+      "number": 7,
+      "width": 3200,
+      "height": 20522,
+      "offset": 37590,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 12313.0
+    },
+    {
+      "number": 8,
+      "width": 3200,
+      "height": 4507,
+      "offset": 58112,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 2704.0
+    }
+  ],
+  "segments": [
+    {
+      "page": 1,
+      "part": 1,
+      "width": 3200,
+      "height": 1800,
+      "top": 0,
+      "imageTop": 0,
+      "imageHeight": 1800,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-01-part-01.webp"
+    },
+    {
+      "page": 2,
+      "part": 1,
+      "width": 3200,
+      "height": 3479,
+      "top": 1800,
+      "imageTop": 1800,
+      "imageHeight": 3479,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-02-part-01.webp"
+    },
+    {
+      "page": 3,
+      "part": 1,
+      "width": 3200,
+      "height": 1595,
+      "top": 5279,
+      "imageTop": 5279,
+      "imageHeight": 1595,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-03-part-01.webp"
+    },
+    {
+      "page": 4,
+      "part": 1,
+      "width": 3200,
+      "height": 4092,
+      "top": 6874,
+      "imageTop": 6874,
+      "imageHeight": 4094,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-04-part-01.webp"
+    },
+    {
+      "page": 4,
+      "part": 2,
+      "width": 3200,
+      "height": 4092,
+      "top": 10966,
+      "imageTop": 10964,
+      "imageHeight": 4096,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-04-part-02.webp"
+    },
+    {
+      "page": 4,
+      "part": 3,
+      "width": 3200,
+      "height": 4092,
+      "top": 15058,
+      "imageTop": 15056,
+      "imageHeight": 4096,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-04-part-03.webp"
+    },
+    {
+      "page": 4,
+      "part": 4,
+      "width": 3200,
+      "height": 223,
+      "top": 19150,
+      "imageTop": 19148,
+      "imageHeight": 225,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-04-part-04.webp"
+    },
+    {
+      "page": 5,
+      "part": 1,
+      "width": 3200,
+      "height": 4092,
+      "top": 19373,
+      "imageTop": 19373,
+      "imageHeight": 4094,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-05-part-01.webp"
+    },
+    {
+      "page": 5,
+      "part": 2,
+      "width": 3200,
+      "height": 4092,
+      "top": 23465,
+      "imageTop": 23463,
+      "imageHeight": 4096,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-05-part-02.webp"
+    },
+    {
+      "page": 5,
+      "part": 3,
+      "width": 3200,
+      "height": 686,
+      "top": 27557,
+      "imageTop": 27555,
+      "imageHeight": 688,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-05-part-03.webp"
+    },
+    {
+      "page": 6,
+      "part": 1,
+      "width": 3200,
+      "height": 4092,
+      "top": 28243,
+      "imageTop": 28243,
+      "imageHeight": 4094,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-06-part-01.webp"
+    },
+    {
+      "page": 6,
+      "part": 2,
+      "width": 3200,
+      "height": 4092,
+      "top": 32335,
+      "imageTop": 32333,
+      "imageHeight": 4096,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-06-part-02.webp"
+    },
+    {
+      "page": 6,
+      "part": 3,
+      "width": 3200,
+      "height": 1163,
+      "top": 36427,
+      "imageTop": 36425,
+      "imageHeight": 1165,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-06-part-03.webp"
+    },
+    {
+      "page": 7,
+      "part": 1,
+      "width": 3200,
+      "height": 4092,
+      "top": 37590,
+      "imageTop": 37590,
+      "imageHeight": 4094,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-07-part-01.webp"
+    },
+    {
+      "page": 7,
+      "part": 2,
+      "width": 3200,
+      "height": 4092,
+      "top": 41682,
+      "imageTop": 41680,
+      "imageHeight": 4096,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-07-part-02.webp"
+    },
+    {
+      "page": 7,
+      "part": 3,
+      "width": 3200,
+      "height": 4092,
+      "top": 45774,
+      "imageTop": 45772,
+      "imageHeight": 4096,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-07-part-03.webp"
+    },
+    {
+      "page": 7,
+      "part": 4,
+      "width": 3200,
+      "height": 4092,
+      "top": 49866,
+      "imageTop": 49864,
+      "imageHeight": 4096,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-07-part-04.webp"
+    },
+    {
+      "page": 7,
+      "part": 5,
+      "width": 3200,
+      "height": 4092,
+      "top": 53958,
+      "imageTop": 53956,
+      "imageHeight": 4096,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-07-part-05.webp"
+    },
+    {
+      "page": 7,
+      "part": 6,
+      "width": 3200,
+      "height": 62,
+      "top": 58050,
+      "imageTop": 58048,
+      "imageHeight": 64,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-07-part-06.webp"
+    },
+    {
+      "page": 8,
+      "part": 1,
+      "width": 3200,
+      "height": 4092,
+      "top": 58112,
+      "imageTop": 58112,
+      "imageHeight": 4094,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-08-part-01.webp"
+    },
+    {
+      "page": 8,
+      "part": 2,
+      "width": 3200,
+      "height": 415,
+      "top": 62204,
+      "imageTop": 62202,
+      "imageHeight": 417,
+      "src": "/assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/page-08-part-02.webp"
+    }
+  ],
+  "resolutionPolicy": {
+    "maxCssZoom": 2.4
+  },
+  "staticResources": {
+    "complete": true,
+    "files": 21,
+    "bytes": 8814542
+  }
+}

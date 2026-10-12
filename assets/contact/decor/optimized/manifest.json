@@ -1,0 +1,27 @@
+{
+  "yellow-rays": {
+    "sourceSha256": "451becc0d6fe28b3a99cdac006876794fe3714c8047f613ab727ed31f8dec55c",
+    "renderSha256": "c6d7481169f70fc0cb91cab82b2a9a3fcfd70dcf11cc1d078786535df45ebcd6",
+    "baseWidth": 118
+  },
+  "white-rays": {
+    "sourceSha256": "8ce80407f0872fa9720df1ed6eca6daedb8413cabd1c9fd00aa5b52394564cc1",
+    "renderSha256": "a7e82ad00c1bc0f4059c03683bd39ecb0c3b897576e031de22a024f869bd0325",
+    "baseWidth": 110
+  },
+  "eyes": {
+    "sourceSha256": "112138b0246e5bc3c416a69642cba5d981d58bd72f105ce462b7c3bce4b8d648",
+    "renderSha256": "67fea8b8e2023d804fe346cf655b492ee7ecb3dc9206e0d28a20e6ead965ae6b",
+    "baseWidth": 60
+  },
+  "curved-arrow": {
+    "sourceSha256": "912c47b70d173b2e7b7142116de357ed029fe0cdbfb10e7d9558e3680d45454f",
+    "renderSha256": "dcb008b776c95cc2fc8582ad8ff424b379fdf43acbbf5b4106a627c309e2de71",
+    "baseWidth": 100
+  },
+  "blue-star": {
+    "sourceSha256": "2c3c787c7c340aea199bd39f747497b2f6769ca6b696942d8c9fb94252723aef",
+    "renderSha256": "2e7c903e69e1cd90a3fd017ad2912878dc80eccd41d981dcd355a2965866c8ee",
+    "baseWidth": 60
+  }
+}

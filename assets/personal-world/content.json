@@ -50,6 +50,14 @@
             "width": 974,
             "alt": "旅行记录：与白色牦牛相遇",
             "id": "travel-03"
+          },
+          {
+            "src": "/assets/personal-world/travel-04.jpg",
+            "id": "travel-04",
+            "alt": "旅行记录：维多利亚港夜景",
+            "width": 1706,
+            "height": 1279,
+            "raw": true
           }
         ],
         "title": "人生就是永远在路上",
@@ -82,6 +90,14 @@
             "width": 1008,
             "alt": "艺术记录：展览现场",
             "id": "art-03"
+          },
+          {
+            "src": "/assets/personal-world/art-04.jpg",
+            "id": "art-04",
+            "alt": "金属人物雕塑",
+            "width": 1274,
+            "height": 956,
+            "raw": true
           }
         ],
         "title": "艺术提升精神品质",

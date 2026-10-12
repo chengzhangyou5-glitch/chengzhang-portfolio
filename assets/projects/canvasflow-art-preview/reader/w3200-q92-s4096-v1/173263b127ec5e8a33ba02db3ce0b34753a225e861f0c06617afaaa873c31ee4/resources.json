@@ -1,0 +1,58 @@
+[
+  {
+    "path": "page-01-part-01.webp",
+    "bytes": 466352,
+    "sha256": "408359dbae5c10c129056a4e9913943fa6c545a436172ef574a8c9c34b5344e9",
+    "width": 3200,
+    "height": 4094
+  },
+  {
+    "path": "page-01-part-02.webp",
+    "bytes": 254042,
+    "sha256": "4cc77f3693d63c06a99dc5fa78d6a856d7b3852b9349debe318c1c3cabc5b949",
+    "width": 3200,
+    "height": 4096
+  },
+  {
+    "path": "page-01-part-03.webp",
+    "bytes": 420298,
+    "sha256": "8c143ae75bad77b7def611f7e3e01bdbc9d9ea0f686e9df5c54f191b715c3357",
+    "width": 3200,
+    "height": 4096
+  },
+  {
+    "path": "page-01-part-04.webp",
+    "bytes": 473788,
+    "sha256": "c5d03bf936a2c0f13037d33af6edf73b931f382fe02391d008593046b6dc0be9",
+    "width": 3200,
+    "height": 4096
+  },
+  {
+    "path": "page-01-part-05.webp",
+    "bytes": 306900,
+    "sha256": "70ac2a55641230950f12f30e932a142340bdc10b84ad7810409459b2f683b0f4",
+    "width": 3200,
+    "height": 4096
+  },
+  {
+    "path": "page-01-part-06.webp",
+    "bytes": 383060,
+    "sha256": "ada2463f76f5ba550fe2e0d7be7be65eadb8e8be93360eceb31f7ed26ba5b2a2",
+    "width": 3200,
+    "height": 4096
+  },
+  {
+    "path": "page-01-part-07.webp",
+    "bytes": 360498,
+    "sha256": "65a754e23760b57ede968adcd5855915ad147aaf1821d7eeb06da228b12ee6a5",
+    "width": 3200,
+    "height": 4096
+  },
+  {
+    "path": "page-01-part-08.webp",
+    "bytes": 200200,
+    "sha256": "70337e0aee1dd201d5bafe88a9756116812ea1a3c8343538618668e8e4a44871",
+    "width": 3200,
+    "height": 2235
+  }
+]

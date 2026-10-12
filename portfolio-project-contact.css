@@ -1,0 +1,7 @@
+/* Route adapter only. Contact dialog contents/materials remain in the existing stylesheet. */
+.project-contact-host { position: fixed; top: 0; left: 0; width: 0; height: 0; }
+.project-contact-host .portfolio-contact { width: 0; min-height: 0; height: 0; margin: 0; padding: 0; }
+.project-contact-host .portfolio-contact > :not(dialog) { display: none; }
+button[data-project-contact] { appearance: none; background: none; border: 0; border-bottom: 1px solid var(--project-line); padding: 0 0 7px; color: inherit; cursor: pointer; text-align: left; }
+.canvasflow-detail button[data-project-contact] { border-bottom-color: rgba(var(--label), .24); padding-bottom: 6px; }
+button[data-project-contact]:focus-visible { outline: 2px solid var(--project-blue, #93b7ff); outline-offset: 5px; }

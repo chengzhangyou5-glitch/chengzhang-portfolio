@@ -1,6 +1,6 @@
 // Uses the captured page's existing JSX runtime (e) and React (i).
 // Dates retain the year-level precision from the supplied resume.
-// Project IDs are stable; destinations will be added with the real project pages.
+// Verified project routes are explicit; unconfigured entries retain Stage A disabled states.
 const portfolioExperienceItems = [
   {
     number: "01", company: "中国电子云计算技术有限公司", role: "UI 设计师", period: "2025–2026",
@@ -13,15 +13,15 @@ const portfolioExperienceItems = [
     work: "参与活动运营视觉设计，负责活动页面及品牌宣传物料设计。",
     output: "负责 KV、H5、海报等物料；参与视觉体系搭建与规范建设，结合 AI 制作 IP 形象及场景素材，优化生产流程。",
     projects: [
-      { id: "aigc-design-efficiency", title: "AIGC 设计提效项目" },
-      { id: "fliggy-lele-run", title: "飞猪乐乐跑运营活动" }
+      { id: "aigc-design-efficiency", href: "/projects/aigc-design-efficiency/", title: "AIGC 设计提效项目" },
+      { id: "fliggy-lele-run", href: "/projects/fliggy-lele-run/", title: "飞猪乐乐跑运营活动" }
     ]
   },
   {
     number: "03", company: "广东乐心医疗电子股份有限公司", role: "UX 设计师", period: "2024–2025",
     work: "参与健康类 APP 的 UI/UX 迭代，负责用户体验分析、交互设计及高保真界面设计。",
     output: "推进首页、运动、健康数据等核心模块优化，完善信息架构、组件规范、图标体系及数据可视化。",
-    projects: [{ id: "lexin-health-app", title: "乐心健康 APP 迭代升级项目" }]
+    projects: [{ id: "lexin-health-app", href: "/projects/lexin-health-app/", title: "乐心健康 APP 迭代升级项目" }]
   }
 ];
 
@@ -137,16 +137,27 @@ function PortfolioWorkExperience() {
                       }),
                       item.projects.length > 0 ? e.jsx("div", {
                         className: "experience-projects",
-                        children: item.projects.map(project => e.jsxs("button", {
-                          type: "button", className: "experience-project-tag",
-                          "data-project-id": project.id, "aria-disabled": true, title: "项目详情待上线",
+                        children: item.projects.map(project => e.jsxs(project.href ? "a" : "button", {
+                          type: project.href ? undefined : "button", className: "experience-project-tag",
+                          href: project.href ? "#featured-projects" : undefined, disabled: !project.href,
+                          onClick: event => {
+                            if (!project.href || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                            event.preventDefault();
+                            event.stopPropagation();
+                            // Keep the expanded row stable while scrolling to the work.
+                            interaction.current = "navigation";
+                            window.dispatchEvent(new CustomEvent("portfolio:select-work", { detail: { projectId: project.id } }));
+                          },
+                          "aria-label": project.href ? `查看${project.title}` : undefined,
+                          "data-project-id": project.id, "data-state": project.href ? "available" : "unavailable",
+                          "aria-disabled": project.href ? undefined : true, title: project.href ? undefined : "项目入口暂不可用",
                           children: [
                             e.jsx("span", { children: project.title }),
-                            e.jsx("svg", {
+                            project.href ? e.jsx("svg", {
                               viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.75,
                               strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true,
                               children: e.jsx("use", { href: "/assets/icons/experience-tabler.svg#arrow-up-right" })
-                            })
+                            }) : e.jsx("span", { className: "experience-project-state", children: "暂不可用" })
                           ]
                         }, project.id))
                       }) : null

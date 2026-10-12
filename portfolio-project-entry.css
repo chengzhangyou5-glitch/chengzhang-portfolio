@@ -1,0 +1,9 @@
+.portfolio-project-transition { position: fixed; inset: 0; z-index: 2147483000; overflow: hidden; pointer-events: auto; }
+.portfolio-project-transition-matte, .portfolio-project-transition-glass { position: absolute; inset: 0; }
+.portfolio-project-transition-matte { background: var(--project-transition-base, #0f1111); }
+.portfolio-project-transition-glass { background: var(--project-transition-glass, rgba(30,38,53,.28)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.portfolio-project-transition[data-phase="covering"] .portfolio-project-transition-matte { opacity: 0; }
+html[data-project-entry-pending] body { visibility: hidden; }
+html[data-project-entry-pending]::after { content: ""; position: fixed; inset: 0; z-index: 2147483000; background-color: var(--project-transition-base, #0f1111); background-image: var(--project-transition-glass, none); pointer-events: auto; }
+html[data-project-navigating] .works-cover-cursor { visibility: hidden !important; }
+@media (prefers-reduced-motion: reduce) { .portfolio-project-transition-glass { backdrop-filter: none; -webkit-backdrop-filter: none; } }

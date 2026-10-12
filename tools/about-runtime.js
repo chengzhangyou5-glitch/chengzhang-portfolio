@@ -7,10 +7,6 @@ const portfolioAboutCopy = {
   introduction: [
     "拥有3年设计实践经验，参与过C端、B端产品、运营设计及AIGC相关项目。",
     "持续关注AI前沿，探索AI在设计流程中的应用。"
-  ],
-  english: [
-    "Three years of practical design experience across C-end and B-end products, operational design, and AIGC projects.",
-    "I keep up with AI developments and explore their practical applications in design workflows."
   ]
 };
 
@@ -21,8 +17,7 @@ const portfolioAboutSkills = [
   { label: "C端 / B端", icon: "devices" },
   { label: "AIGC", icon: "sparkles" },
   { label: "Vibe Coding", icon: "code" },
-  { label: "AI工作流", icon: "sitemap" },
-  { label: "INFJ", icon: "leaf" }
+  { label: "AI工作流", icon: "sitemap" }
 ];
 
 function PortfolioAbout({ portraitRef, lenis } = {}) {
@@ -158,11 +153,6 @@ function PortfolioAbout({ portraitRef, lenis } = {}) {
               s.jsx("div", {
                 className: "about-introduction",
                 children: portfolioAboutCopy.introduction.map((line, index) => s.jsx("p", { children: line }, index))
-              }),
-              s.jsx("div", {
-                className: "about-english",
-                lang: "en",
-                children: portfolioAboutCopy.english.map((line, index) => s.jsx("p", { children: line }, index))
               })
             ]
           })

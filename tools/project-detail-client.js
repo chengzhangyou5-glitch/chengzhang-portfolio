@@ -1,4 +1,7 @@
 import { portfolioGridGeometry } from "./project-detail-background.mjs";
+import { mountProjectScroll } from "./project-scroll-runtime.js";
+
+mountProjectScroll();
 
 const grid = document.querySelector(".project-background-grid");
 const renderGrid = () => {
@@ -29,3 +32,17 @@ document.querySelectorAll("[data-works-return]").forEach(link => {
     } catch {}
   });
 });
+
+// The shared glass cover waits for this route's own first visible content,
+// never for BGM or another page's models.
+async function revealProject() {
+  await document.fonts.ready;
+  const image = document.querySelector('.project-overview-cover img');
+  if (image) {
+    if (!image.complete) await new Promise(resolve => { image.addEventListener('load', resolve, { once: true }); image.addEventListener('error', resolve, { once: true }); });
+    if (image.naturalWidth) await image.decode().catch(() => {});
+  }
+  await window.__portfolioStickerResidue?.ready;
+  requestAnimationFrame(() => dispatchEvent(new Event('portfolio:page-ready')));
+}
+revealProject();

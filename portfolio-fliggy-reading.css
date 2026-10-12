@@ -1,0 +1,24 @@
+/* Loaded only by the Fliggy detail route. */
+.fliggy-detail-page { overflow-anchor: none; }
+.fliggy-detail-page .project-reading-pages { width: var(--fliggy-reading-width, 100%); margin-inline: auto; border-radius: 22px; overflow: clip; }
+.fliggy-detail-page .project-pdf-link { font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed); gap: 22px; }
+.fliggy-detail-page .project-footer { width: var(--fliggy-reading-width, 100%); margin: 88px auto 0; padding: 0 0 64px; border-top: 0; font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed); }
+.fliggy-detail-page .project-footer a { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.fliggy-detail-page .project-footer a:last-child { align-items: flex-end; text-align: right; gap: 16px; }
+.fliggy-detail-page .fliggy-footer-label { align-self: center; color: var(--project-muted); font: var(--type-weight-body) var(--type-caption-size)/var(--type-caption-leading) var(--portfolio-font-mixed); }
+.fliggy-detail-page .fliggy-footer-destination { display: inline-flex; align-items: center; gap: 16px; font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed); }
+/* Match the first-level Selected Works cursor's centred glass label and entrance. */
+.fliggy-context-link { position: fixed; top: 0; left: 0; z-index: 40; display: block; border-radius: 999px; color: #f5f8ff; font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed); white-space: nowrap; text-decoration: none; opacity: 0; visibility: hidden; pointer-events: none; transform: translate3d(var(--fliggy-nav-x, 0px), var(--fliggy-nav-y, 0px), 0) translate(-50%, -50%); transition: opacity 140ms ease, visibility 0s linear 220ms; }
+.fliggy-context-link-content { display: block; padding: 10px 18px; border: 1px solid rgb(168 196 255 / 28%); border-radius: 999px; background: linear-gradient(145deg, rgb(69 99 166 / 24%), rgb(24 39 85 / 14%)), rgb(12 22 48 / 48%); box-shadow: inset 0 1px rgb(217 232 255 / 25%); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); scale: .86; transform-origin: center; transition: scale 220ms cubic-bezier(.16, 1, .3, 1); }
+.fliggy-context-link[data-visible="true"] { opacity: 1; visibility: visible; transition-delay: 0s; }
+.fliggy-context-link[data-visible="true"] .fliggy-context-link-content { scale: 1; }
+html[data-fliggy-reading-cursor] .fliggy-detail-page,
+html[data-fliggy-reading-cursor] .fliggy-detail-page * { cursor: none !important; }
+@media (max-width: 767px) {
+  .fliggy-detail-page .project-pdf-link { gap: 10px; }
+  .fliggy-detail-page .project-reading-pages { border-radius: 14px; }
+  .fliggy-detail-page .project-footer { margin-top: 48px; padding-bottom: 40px; gap: 20px; }
+  .fliggy-detail-page .project-footer a, .fliggy-detail-page .project-footer a:last-child { gap: 12px; }
+  .fliggy-detail-page .fliggy-footer-destination { gap: 10px; }
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) { .fliggy-context-link { display: none; } }

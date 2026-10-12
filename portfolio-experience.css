@@ -1,13 +1,13 @@
 .portfolio-experience {
-  --experience-accent: #416fc3;
+  --experience-accent: var(--color-accent);
   --experience-muted: rgba(var(--label, 19, 29, 62), .66);
   --experience-divider: rgba(var(--label, 19, 29, 62), .19);
   /* Same material palette as About's skill orbs; only the tag shape differs. */
-  --experience-tag-icon: #4268a6;
-  --experience-tag-border: rgb(75 110 172 / 28%);
-  --experience-tag-top: rgb(255 255 255 / 42%);
-  --experience-tag-bottom: rgb(148 186 240 / 12%);
-  --experience-tag-highlight: rgb(255 255 255 / 80%);
+  --experience-tag-icon: var(--glass-soft-icon);
+  --experience-tag-border: var(--glass-soft-border);
+  --experience-tag-top: var(--glass-soft-top);
+  --experience-tag-bottom: var(--glass-soft-bottom);
+  --experience-tag-highlight: var(--glass-soft-highlight);
   --experience-company-offset: 308px;
   grid-column: 1 / -1;
   position: relative;
@@ -20,12 +20,12 @@
   scroll-margin-top: 100px;
 }
 .dark .portfolio-experience {
-  --experience-accent: #7ca5ff;
-  --experience-tag-icon: #b6d2ff;
-  --experience-tag-border: rgb(168 196 255 / 28%);
-  --experience-tag-top: rgb(69 99 166 / 24%);
-  --experience-tag-bottom: rgb(24 39 85 / 14%);
-  --experience-tag-highlight: rgb(217 232 255 / 25%);
+  --experience-accent: var(--color-accent);
+  --experience-tag-icon: var(--glass-soft-icon);
+  --experience-tag-border: var(--glass-soft-border);
+  --experience-tag-top: var(--glass-soft-top);
+  --experience-tag-bottom: var(--glass-soft-bottom);
+  --experience-tag-highlight: var(--glass-soft-highlight);
 }
 .portfolio-experience .experience-en { font-family: var(--portfolio-font-en); }
 .portfolio-experience .experience-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; padding: 0 12px 24px; }
@@ -67,7 +67,7 @@
 .experience-item[data-expanded="true"] .experience-arrow { color: var(--experience-accent); }
 .experience-item[data-expanded="true"] .experience-dash { background: var(--experience-accent); }
 .experience-item[data-expanded="true"] .experience-arrow { transform: rotate(180deg); }
-.experience-trigger:focus-visible { outline: 1px solid var(--experience-accent); outline-offset: -5px; }
+
 .experience-panel { display: grid; grid-template-rows: 0fr; visibility: hidden; opacity: 0; transition: grid-template-rows 380ms cubic-bezier(.22, 1, .36, 1), opacity 180ms ease, visibility 380ms; }
 .experience-item[data-expanded="true"] .experience-panel { grid-template-rows: 1fr; visibility: visible; opacity: 1; }
 .experience-panel-clip { min-height: 0; overflow: hidden; }
@@ -77,14 +77,17 @@
 .experience-copy-row { display: grid; grid-template-columns: 120px minmax(0, 1fr); column-gap: 32px; align-items: baseline; }
 .experience-copy dt { margin: 0; color: var(--experience-muted); font-family: var(--portfolio-font-zh); font-size: 20px; font-weight: 400; line-height: 1.65; }
 .experience-copy dd { margin: 0; min-width: 0; font-family: var(--portfolio-font-mixed); font-size: 20px; font-weight: 400; line-height: 1.65; overflow-wrap: break-word; }
-.experience-projects { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0 152px; }
-.experience-project-tag { display: inline-flex; align-items: center; gap: 16px; max-width: 100%; padding: 9px 13px; border: 1px solid var(--experience-tag-border); border-radius: 999px; background: linear-gradient(145deg, var(--experience-tag-top), var(--experience-tag-bottom)); box-shadow: inset 0 1px 0 var(--experience-tag-highlight), 0 5px 16px rgb(11 25 68 / 10%); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: rgba(var(--label, 19, 29, 62), .90); font-family: var(--portfolio-font-mixed); font-size: 14px; font-weight: 500; line-height: 1.5; text-align: left; cursor: default; transition: border-color 180ms ease, box-shadow 180ms ease, color 180ms ease; }
+.experience-projects { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-5) 0 0 152px; }
+.experience-project-tag { max-width: 100%; text-align: left; cursor: default; transition: border-color var(--motion-control) ease, box-shadow var(--motion-control) ease, color var(--motion-control) ease; }
 .experience-project-tag svg { width: 18px; height: 18px; flex: 0 0 auto; color: var(--experience-tag-icon); transition: transform 180ms ease, color 180ms ease; }
-.experience-project-tag:focus-visible { outline: 1px solid var(--experience-accent); outline-offset: 3px; }
+
 @media (hover: hover) {
-  .experience-project-tag:hover { border-color: var(--experience-tag-icon); box-shadow: inset 0 1px 0 var(--experience-tag-highlight), 0 5px 16px rgb(11 25 68 / 16%); color: rgb(var(--label, 19, 29, 62)); }
-  .experience-project-tag:hover svg { color: var(--experience-tag-icon); transform: translate(2px, -2px); }
+  .experience-project-tag:not([aria-disabled="true"]):hover { border-color: var(--experience-tag-icon); box-shadow: var(--glass-soft-hover-shadow); color: var(--color-reading-ink); }
+  .experience-project-tag:not([aria-disabled="true"]):hover svg { color: var(--experience-tag-icon); transform: translate(2px, -2px); }
 }
+.experience-project-tag[aria-disabled="true"] { opacity: var(--state-unavailable-opacity); box-shadow: none; }
+.experience-project-state { font: var(--type-weight-body) var(--type-caption-size)/var(--type-caption-leading) var(--portfolio-font-mixed); white-space: nowrap; }
+.experience-project-tag[data-state="available"] { cursor: pointer; text-decoration: none; }
 @media (min-width: 1200px) and (max-height: 820px) {
   .portfolio-experience { min-height: calc(100dvh - 184px); padding-top: 12px; }
   .portfolio-experience .experience-heading h2 { font-size: 30px; }
@@ -127,9 +130,27 @@
   .experience-copy-row { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; }
   .experience-copy dt, .experience-copy dd { font-size: 16px; line-height: 1.7; }
   .experience-projects { margin: 18px 0 0 76px; gap: 8px; }
-  .experience-project-tag { gap: 10px; padding: 8px 10px; font-size: 12px; }
+
 }
 @media (prefers-reduced-motion: reduce) {
   .experience-trigger, .experience-panel, .experience-arrow, .experience-number, .experience-dash,
   .experience-project-tag, .experience-project-tag svg { transition: none; }
+}
+
+/* Stage 2: narrative is Body Large; roles/dates and detail labels are Small. */
+/* The three existing project destinations retain the tag material and typography. */
+.experience-project-tag[href] { cursor: pointer; text-decoration: none; }
+.portfolio-experience .experience-copy dd {
+  font: var(--type-weight-body) var(--type-body-large-size)/var(--type-body-large-leading) var(--portfolio-font-mixed);
+}
+.portfolio-experience .experience-copy dt, .portfolio-experience .experience-meta {
+  font: var(--type-weight-label) var(--type-small-size)/var(--type-small-leading) var(--portfolio-font-mixed);
+}
+.portfolio-experience .experience-period {
+  font: var(--type-weight-body) var(--type-small-size)/var(--type-small-leading) var(--portfolio-font-en);
+}
+.portfolio-experience .experience-eyebrow, .portfolio-experience .experience-index {
+  font-size: var(--type-caption-size);
+  font-weight: var(--type-weight-body);
+  line-height: var(--type-caption-leading);
 }

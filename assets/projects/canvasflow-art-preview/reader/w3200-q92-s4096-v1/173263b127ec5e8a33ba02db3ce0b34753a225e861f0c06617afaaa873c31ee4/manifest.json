@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "kind": "continuous-webp",
+  "sha256": "173263b127ec5e8a33ba02db3ce0b34753a225e861f0c06617afaaa873c31ee4",
+  "sourceUrl": "/assets/projects/canvasflow-art-preview/project.pdf",
+  "spec": {
+    "width": 3200,
+    "quality": 92,
+    "method": 4,
+    "maxHeight": 4096,
+    "bleed": 2,
+    "version": "w3200-q92-s4096-v1"
+  },
+  "maxWidth": 3200,
+  "totalHeight": 30877,
+  "pages": [
+    {
+      "number": 1,
+      "width": 3200,
+      "height": 30877,
+      "offset": 0,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 18526.0
+    }
+  ],
+  "segments": [
+    {
+      "page": 1,
+      "part": 1,
+      "width": 3200,
+      "height": 4092,
+      "top": 0,
+      "imageTop": 0,
+      "imageHeight": 4094,
+      "src": "/assets/projects/canvasflow-art-preview/reader/w3200-q92-s4096-v1/173263b127ec5e8a33ba02db3ce0b34753a225e861f0c06617afaaa873c31ee4/page-01-part-01.webp"
+    },
+    {
+      "page": 1,
+      "part": 2,
+      "width": 3200,
+      "height": 4092,
+      "top": 4092,
+      "imageTop": 4090,
+      "imageHeight": 4096,
+      "src": "/assets/projects/canvasflow-art-preview/reader/w3200-q92-s4096-v1/173263b127ec5e8a33ba02db3ce0b34753a225e861f0c06617afaaa873c31ee4/page-01-part-02.webp"
+    },
+    {
+      "page": 1,
+      "part": 3,
+      "width": 3200,
+      "height": 4092,
+      "top": 8184,
+      "imageTop": 8182,
+      "imageHeight": 4096,
+      "src": "/assets/projects/canvasflow-art-preview/reader/w3200-q92-s4096-v1/173263b127ec5e8a33ba02db3ce0b34753a225e861f0c06617afaaa873c31ee4/page-01-part-03.webp"
+    },
+    {
+      "page": 1,
+      "part": 4,
+      "width": 3200,
+      "height": 4092,
+      "top": 12276,
+      "imageTop": 12274,
+      "imageHeight": 4096,
+      "src": "/assets/projects/canvasflow-art-preview/reader/w3200-q92-s4096-v1/173263b127ec5e8a33ba02db3ce0b34753a225e861f0c06617afaaa873c31ee4/page-01-part-04.webp"
+    },
+    {
+      "page": 1,
+      "part": 5,
+      "width": 3200,
+      "height": 4092,
+      "top": 16368,
+      "imageTop": 16366,
+      "imageHeight": 4096,
+      "src": "/assets/projects/canvasflow-art-preview/reader/w3200-q92-s4096-v1/173263b127ec5e8a33ba02db3ce0b34753a225e861f0c06617afaaa873c31ee4/page-01-part-05.webp"
+    },
+    {
+      "page": 1,
+      "part": 6,
+      "width": 3200,
+      "height": 4092,
+      "top": 20460,
+      "imageTop": 20458,
+      "imageHeight": 4096,
+      "src": "/assets/projects/canvasflow-art-preview/reader/w3200-q92-s4096-v1/173263b127ec5e8a33ba02db3ce0b34753a225e861f0c06617afaaa873c31ee4/page-01-part-06.webp"
+    },
+    {
+      "page": 1,
+      "part": 7,
+      "width": 3200,
+      "height": 4092,
+      "top": 24552,
+      "imageTop": 24550,
+      "imageHeight": 4096,
+      "src": "/assets/projects/canvasflow-art-preview/reader/w3200-q92-s4096-v1/173263b127ec5e8a33ba02db3ce0b34753a225e861f0c06617afaaa873c31ee4/page-01-part-07.webp"
+    },
+    {
+      "page": 1,
+      "part": 8,
+      "width": 3200,
+      "height": 2233,
+      "top": 28644,
+      "imageTop": 28642,
+      "imageHeight": 2235,
+      "src": "/assets/projects/canvasflow-art-preview/reader/w3200-q92-s4096-v1/173263b127ec5e8a33ba02db3ce0b34753a225e861f0c06617afaaa873c31ee4/page-01-part-08.webp"
+    }
+  ],
+  "resolutionPolicy": {
+    "maxCssZoom": 2.4
+  },
+  "staticResources": {
+    "complete": true,
+    "files": 8,
+    "bytes": 2865138
+  }
+}

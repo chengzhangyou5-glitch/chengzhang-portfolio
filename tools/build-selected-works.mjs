@@ -7,7 +7,9 @@ import { buildProjectDetails } from "./build-project-details.mjs";
 import { buildCanvasflowDetail } from "./build-canvasflow-detail.mjs";
 
 const root = new URL("../", import.meta.url);
-const source = await readFile(new URL("selected-works-runtime.js", import.meta.url), "utf8");
+const responsive = JSON.parse(await readFile(new URL("assets/works/optimized.json", root), "utf8"));
+const source = (await readFile(new URL("selected-works-runtime.js", import.meta.url), "utf8"))
+  .replace("__PORTFOLIO_WORKS_RESPONSIVE__", JSON.stringify(responsive));
 const rhythm = await readFile(new URL("selected-works-rhythm.js", import.meta.url), "utf8");
 const experience = await readFile(new URL("work-experience-runtime.js", import.meta.url), "utf8");
 const { component, projects, experienceComponent } = new Function("e", "i", "worksScrollEnv", "worksLoadingGate", "worksMediaEnv", `${experience}\n${rhythm}\n${source}\nreturn { component: PortfolioWorksSection, projects: portfolioSelectedProjects, experienceComponent: PortfolioWorkExperience };`)(jsxRuntime, React, { useContainerEl: () => null }, { useHomeLoadingGate: () => false }, { useShellMedia: () => ({ soundEnabled: false }) });

@@ -1,0 +1,324 @@
+{
+  "music-01": {
+    "sourceSha256": "2f5fe07db6252de6c3507b4bcec234ef6e711f438c4d6eb8f13b99c14128668d",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/music-01-342w.webp",
+        "width": 342,
+        "height": 480,
+        "bytes": 44008
+      },
+      {
+        "src": "/assets/personal-world/optimized/music-01-547w.webp",
+        "width": 547,
+        "height": 768,
+        "bytes": 160206
+      },
+      {
+        "src": "/assets/personal-world/optimized/music-01-729w.webp",
+        "width": 729,
+        "height": 1024,
+        "bytes": 275404
+      }
+    ]
+  },
+  "music-02": {
+    "sourceSha256": "c46207e22c53749fc47c81be78b9bca8f2cf77c70df9af0e1bc8452695420d0f",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/music-02-316w.webp",
+        "width": 316,
+        "height": 480,
+        "bytes": 50444
+      },
+      {
+        "src": "/assets/personal-world/optimized/music-02-506w.webp",
+        "width": 506,
+        "height": 769,
+        "bytes": 183372
+      },
+      {
+        "src": "/assets/personal-world/optimized/music-02-674w.webp",
+        "width": 674,
+        "height": 1024,
+        "bytes": 312808
+      }
+    ]
+  },
+  "travel-01": {
+    "sourceSha256": "51f38c9d07bf96ab875ff3d6dc96bc8187bd910c38e3a67de3b452f64bc0f3f3",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/travel-01-424w.webp",
+        "width": 424,
+        "height": 480,
+        "bytes": 52734
+      },
+      {
+        "src": "/assets/personal-world/optimized/travel-01-679w.webp",
+        "width": 679,
+        "height": 768,
+        "bytes": 179132
+      },
+      {
+        "src": "/assets/personal-world/optimized/travel-01-905w.webp",
+        "width": 905,
+        "height": 1024,
+        "bytes": 325660
+      }
+    ]
+  },
+  "music-03": {
+    "sourceSha256": "3df1a40d5c8686524b2bea8fa170593214e2dd53aff96e5cbd8316ac87ceb793",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/music-03-480w.webp",
+        "width": 480,
+        "height": 442,
+        "bytes": 64066
+      },
+      {
+        "src": "/assets/personal-world/optimized/music-03-768w.webp",
+        "width": 768,
+        "height": 708,
+        "bytes": 208606
+      },
+      {
+        "src": "/assets/personal-world/optimized/music-03-1024w.webp",
+        "width": 1024,
+        "height": 944,
+        "bytes": 354136
+      }
+    ]
+  },
+  "travel-03": {
+    "sourceSha256": "f2b40eb3b33d972c7f9e539ec2a243d29f367a872ccf1fdac90d9ca23c9cbf3f",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/travel-03-392w.webp",
+        "width": 392,
+        "height": 480,
+        "bytes": 76124
+      },
+      {
+        "src": "/assets/personal-world/optimized/travel-03-628w.webp",
+        "width": 628,
+        "height": 769,
+        "bytes": 256232
+      },
+      {
+        "src": "/assets/personal-world/optimized/travel-03-837w.webp",
+        "width": 837,
+        "height": 1024,
+        "bytes": 453426
+      }
+    ]
+  },
+  "travel-04": {
+    "sourceSha256": "435bae3f45a7561dfc81edabadccdec4a0b5f7c0417eb7a3e220133b22ddd8a1",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/travel-04-480w.webp",
+        "width": 480,
+        "height": 360,
+        "bytes": 53958
+      },
+      {
+        "src": "/assets/personal-world/optimized/travel-04-768w.webp",
+        "width": 768,
+        "height": 576,
+        "bytes": 128536
+      },
+      {
+        "src": "/assets/personal-world/optimized/travel-04-1024w.webp",
+        "width": 1024,
+        "height": 768,
+        "bytes": 225076
+      }
+    ]
+  },
+  "travel-02": {
+    "sourceSha256": "12384921ff7ce2472371c6227a5872dac0a1fff5f678742ff624baa22e493e6b",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/travel-02-480w.webp",
+        "width": 480,
+        "height": 469,
+        "bytes": 86504
+      },
+      {
+        "src": "/assets/personal-world/optimized/travel-02-768w.webp",
+        "width": 768,
+        "height": 750,
+        "bytes": 288718
+      },
+      {
+        "src": "/assets/personal-world/optimized/travel-02-962w.webp",
+        "width": 962,
+        "height": 940,
+        "bytes": 444654
+      }
+    ]
+  },
+  "art-01": {
+    "sourceSha256": "c62124bde174862929e8ebb4fa80d15da50059cd47df5dbab071445d0c656593",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/art-01-432w.webp",
+        "width": 432,
+        "height": 481,
+        "bytes": 66246
+      },
+      {
+        "src": "/assets/personal-world/optimized/art-01-690w.webp",
+        "width": 690,
+        "height": 768,
+        "bytes": 212446
+      },
+      {
+        "src": "/assets/personal-world/optimized/art-01-921w.webp",
+        "width": 921,
+        "height": 1024,
+        "bytes": 385452
+      }
+    ]
+  },
+  "art-02": {
+    "sourceSha256": "a2a7047fa833e25a1f12c1eb40ac4d57ed249e7058cb70d47db87089f2a84990",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/art-02-405w.webp",
+        "width": 405,
+        "height": 480,
+        "bytes": 76854
+      },
+      {
+        "src": "/assets/personal-world/optimized/art-02-647w.webp",
+        "width": 647,
+        "height": 768,
+        "bytes": 252378
+      },
+      {
+        "src": "/assets/personal-world/optimized/art-02-863w.webp",
+        "width": 863,
+        "height": 1024,
+        "bytes": 430776
+      }
+    ]
+  },
+  "art-04": {
+    "sourceSha256": "71043e403af69e58879934a056998c57f75ef99578cbf16b7b109fae4e8c45ef",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/art-04-480w.webp",
+        "width": 480,
+        "height": 360,
+        "bytes": 34500
+      },
+      {
+        "src": "/assets/personal-world/optimized/art-04-768w.webp",
+        "width": 768,
+        "height": 576,
+        "bytes": 77956
+      },
+      {
+        "src": "/assets/personal-world/optimized/art-04-1024w.webp",
+        "width": 1024,
+        "height": 768,
+        "bytes": 127702
+      }
+    ]
+  },
+  "art-03": {
+    "sourceSha256": "cb35a35b4d7657c29215f336c0ea016d6eb653d528028d9d2690d41c494e6660",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/art-03-411w.webp",
+        "width": 411,
+        "height": 480,
+        "bytes": 69354
+      },
+      {
+        "src": "/assets/personal-world/optimized/art-03-658w.webp",
+        "width": 658,
+        "height": 768,
+        "bytes": 223704
+      },
+      {
+        "src": "/assets/personal-world/optimized/art-03-878w.webp",
+        "width": 878,
+        "height": 1024,
+        "bytes": 392280
+      }
+    ]
+  },
+  "physical-work-01": {
+    "sourceSha256": "a6abaa56b9a339bb0b55ed0af9dd66499ac8aa41b74002618dd506242c22351c",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/physical-work-01-395w.webp",
+        "width": 395,
+        "height": 479,
+        "bytes": 51382
+      },
+      {
+        "src": "/assets/personal-world/optimized/physical-work-01-633w.webp",
+        "width": 633,
+        "height": 768,
+        "bytes": 173298
+      },
+      {
+        "src": "/assets/personal-world/optimized/physical-work-01-844w.webp",
+        "width": 844,
+        "height": 1024,
+        "bytes": 306672
+      }
+    ]
+  },
+  "physical-work-02": {
+    "sourceSha256": "5b10f54fb9f8c237d0e76bf04e5a89a09269b7c45987963467e5929c282fd77c",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/physical-work-02-419w.webp",
+        "width": 419,
+        "height": 480,
+        "bytes": 64010
+      },
+      {
+        "src": "/assets/personal-world/optimized/physical-work-02-670w.webp",
+        "width": 670,
+        "height": 767,
+        "bytes": 207428
+      },
+      {
+        "src": "/assets/personal-world/optimized/physical-work-02-894w.webp",
+        "width": 894,
+        "height": 1024,
+        "bytes": 358846
+      }
+    ]
+  },
+  "physical-work-03": {
+    "sourceSha256": "870ab4ba77c3698964118649336d406777dc4767d1f5db4a17058c9d668827a1",
+    "variants": [
+      {
+        "src": "/assets/personal-world/optimized/physical-work-03-446w.webp",
+        "width": 446,
+        "height": 480,
+        "bytes": 61918
+      },
+      {
+        "src": "/assets/personal-world/optimized/physical-work-03-713w.webp",
+        "width": 713,
+        "height": 768,
+        "bytes": 226054
+      },
+      {
+        "src": "/assets/personal-world/optimized/physical-work-03-951w.webp",
+        "width": 951,
+        "height": 1024,
+        "bytes": 389700
+      }
+    ]
+  }
+}

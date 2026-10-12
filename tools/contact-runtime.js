@@ -1,5 +1,5 @@
 // Uses the existing page's JSX runtime (e) and React (i).
-// Set a local asset URL in downloads when the final files are ready.
+// PDF viewing links reference the verified local documents in a new tab.
 const portfolioContactData = {
   email: "3195467418@qq.com",
   city: "中国 · 重庆",
@@ -8,8 +8,8 @@ const portfolioContactData = {
   signature: "游承樟 © 2026",
   qrImage: "/assets/contact/wechat-qr.png",
   downloads: [
-    { key: "resume", label: "下载简历", href: null, notice: "简历文件准备中" },
-    { key: "portfolio", label: "下载作品集 PDF", href: null, notice: "作品集 PDF 准备中" }
+    { key: "resume", label: "查看简历 PDF", href: "/assets/downloads/you-chengzhang-resume-2026.pdf" },
+    { key: "portfolio", label: "查看作品集 PDF", href: "/assets/downloads/you-chengzhang-portfolio-2026-10.pdf" }
   ]
 };
 
@@ -42,7 +42,7 @@ function PortfolioContactIcon({ type, className = "" }) {
   });
 }
 
-// Original supplied SVGs, copied intact into this worktree's local assets.
+// Derivatives preserve the complete supplied SVG composition; originals remain as fallback.
 function PortfolioContactDoodle({ type }) {
   const assets = {
     "white-rays": [177, 177], "blue-star": [87, 87],
@@ -51,7 +51,14 @@ function PortfolioContactDoodle({ type }) {
   const [width, height] = assets[type];
   return e.jsx("img", {
     className: `contact-connect-doodle contact-connect-doodle-${type}`,
-    src: `./assets/contact/decor/${type}.svg`,
+    src: `/assets/contact/decor/optimized/${type}-2x.webp`,
+    srcSet: [1, 2, 3].map(scale => `/assets/contact/decor/optimized/${type}-${scale}x.webp ${scale}x`).join(", "),
+    onError: event => {
+      const image = event.currentTarget;
+      if (!image.currentSrc.endsWith(".webp")) return;
+      image.removeAttribute("srcset");
+      image.src = `/assets/contact/decor/${type}.svg`;
+    },
     alt: "", "aria-hidden": true, draggable: false,
     width, height, loading: "lazy", decoding: "async"
   });
@@ -348,14 +355,16 @@ function PortfolioContact(props, forwardedRef) {
               const children = [
                 e.jsx(PortfolioContactIcon, { type: item.key }, "icon"),
                 e.jsx("span", { children: item.label }, "label"),
-                e.jsx(PortfolioContactIcon, { type: "download", className: "contact-connect-download-arrow" }, "arrow")
+                item.href
+                  ? e.jsx(PortfolioContactIcon, { type: "arrow", className: "contact-connect-download-arrow" }, "arrow")
+                  : e.jsx("span", { className: "contact-connect-download-state", children: "准备中" }, "state")
               ];
               return item.href
-                ? e.jsxs("a", { className: "contact-connect-download", href: item.href, download: true, children }, item.key)
-                : e.jsxs("button", { type: "button", className: "contact-connect-download", onClick: () => showNotice(item.notice), children }, item.key);
+                ? e.jsxs("a", { className: "contact-connect-download", href: item.href, target: "_blank", rel: "noopener noreferrer", "data-state": "available", children }, item.key)
+                : e.jsxs("button", { type: "button", className: "contact-connect-download", "data-state": "preparing", "aria-disabled": true, "aria-label": item.label + "，准备中", "aria-describedby": "contact-connect-notice", title: item.notice, onClick: () => showNotice(item.notice), children }, item.key);
             })
           }),
-          e.jsx("div", { className: "contact-connect-notice", role: "status", "aria-live": "polite", "aria-atomic": true, children: notice })
+          e.jsx("div", { id: "contact-connect-notice", className: "contact-connect-notice", role: "status", "aria-live": "polite", "aria-atomic": true, children: notice || portfolioContactData.downloads.filter(item => !item.href).map(item => item.notice).join("；") })
         ]
       })
     ]

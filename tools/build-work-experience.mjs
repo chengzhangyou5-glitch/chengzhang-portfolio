@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { preserveGeneratedFormat } from "./preserve-generated-format.mjs";
 import React from "react";
 import * as jsxRuntime from "react/jsx-runtime";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -14,6 +15,7 @@ const markup = renderToStaticMarkup(React.createElement(component));
 const start = "/* PORTFOLIO_EXPERIENCE_START */";
 const end = "/* PORTFOLIO_EXPERIENCE_END */";
 let chunk = await readFile(chunkPath, "utf8");
+const originalChunk = chunk;
 if (chunk.includes(start)) {
   const from = chunk.indexOf(start);
   const to = chunk.indexOf(end, from);
@@ -59,6 +61,6 @@ if (html.includes(htmlStart)) {
   html = html.slice(0, position) + block + html.slice(position);
 }
 
-await writeFile(chunkPath, chunk);
+await writeFile(chunkPath, preserveGeneratedFormat(originalChunk, chunk));
 await writeFile(indexPath, html);
 console.log("Updated work experience runtime and static HTML.");

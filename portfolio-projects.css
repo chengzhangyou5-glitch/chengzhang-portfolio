@@ -1,18 +1,22 @@
 /* Standalone project detail pages. No homepage selectors or global app imports. */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; color-scheme: dark; }
-body.project-detail-page { margin: 0; background: #0f1111; color: #f3f5f8; font-family: var(--portfolio-font-mixed); -webkit-font-smoothing: antialiased; }
-.project-detail-page { --project-muted: #9ba8bc; --project-line: rgba(169,191,232,.19); --project-blue: #a8c4ff; }
+html { scroll-behavior: smooth; }
+html.lenis:has(body.project-detail-page) { scroll-behavior: auto; }
+body.project-detail-page { margin: 0; background: var(--color-page); color: var(--color-reading-ink); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+.project-detail-page { --project-muted: var(--color-muted); --project-line: var(--color-line); --project-blue: var(--color-reader-accent); --project-surface: var(--color-page); }
 .project-detail-page a { color: inherit; text-decoration: none; }
-.project-detail-page a:focus-visible { outline: 2px solid var(--project-blue); outline-offset: 6px; }
-.project-skip { position: fixed; top: 12px; left: 16px; z-index: 5; padding: 12px 18px; background: #15203b; transform: translateY(-160%); }
+
+.project-skip { position: fixed; top: 12px; left: 16px; z-index: 5; padding: 12px 18px; background: var(--color-skip-surface); transform: translateY(-160%); }
 .project-skip:focus { transform: none; }
-.project-background { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; background: #0f1111; }
+.project-background { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; background: var(--color-page); }
 /* Same 8 px dot pitch and blue/black palette as the existing scene. */
 .project-background-pixels { position: absolute; inset: 0; background: radial-gradient(circle, rgba(78,116,215,.19) .7px, transparent 1px) 0 0 / 8px 8px; mask-image: radial-gradient(ellipse 25% 34% at 8% 20%, #000 10%, transparent 85%), radial-gradient(ellipse 21% 35% at 86% 80%, #000 10%, transparent 85%); }
 .project-background-grid { position: absolute; width: 100%; height: 100%; fill: none; }
 .project-background-grid path { stroke: rgba(255,255,255,.1); stroke-width: 1; }
 .project-background-grid [data-grid-path="crosses"] { stroke: #fff; opacity: .4; }
+html.light .project-background-grid path { stroke: rgb(19 29 62 / 10%); }
+html.light .project-background-grid [data-grid-path="crosses"] { stroke: #131d3e; }
+html.light .project-background-pixels { background-image: radial-gradient(circle, rgb(78 116 215 / 12%) .7px, transparent 1px); }
 .project-header { height: 80px; }
 .project-header-inner { max-width: 1320px; height: 100%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--project-line); }
 .project-brand { font: 700 17px/1 var(--portfolio-font-en); letter-spacing: .01em; }
@@ -110,3 +114,25 @@ body.project-detail-page { margin: 0; background: #0f1111; color: #f3f5f8; font-
   .project-footer a:last-child > span:first-child { grid-column: 1 / -1; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .project-back span { transition: none; } }
+
+/* V1 public shell typography. Existing widths, spacing and reader remain intact. */
+.project-brand {
+  font: var(--type-weight-title-en) var(--type-brand-size)/var(--type-brand-leading) var(--portfolio-font-en);
+  letter-spacing: var(--type-tracking-default);
+}
+.project-back, .project-pdf-link, .project-skip, .project-footer {
+  font: var(--type-weight-label) var(--type-button-size)/var(--type-button-leading) var(--portfolio-font-mixed);
+}
+.project-footer a:last-child > span:first-child,
+.project-reading-caption, .project-placeholder-status, .project-placeholder-footer {
+  font: var(--type-weight-body) var(--type-caption-size)/var(--type-caption-leading) var(--portfolio-font-mixed);
+}
+.project-reading-kicker, .project-placeholder-number {
+  font: var(--type-weight-body) var(--type-caption-size)/var(--type-caption-leading) var(--portfolio-font-en);
+}
+
+.project-reading h2 {
+  font-size: var(--type-reading-heading-size);
+  font-weight: var(--type-weight-title-zh);
+  line-height: var(--type-reading-heading-leading);
+}

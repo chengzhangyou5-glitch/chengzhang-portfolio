@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { preserveGeneratedFormat } from "./preserve-generated-format.mjs";
 import React from "react";
 import * as jsxRuntime from "react/jsx-runtime";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -13,6 +14,7 @@ const markup = renderToStaticMarkup(React.createElement(React.forwardRef(compone
 
 // Replace only the existing contact module; its exported ID and forwarded scene ref are retained.
 let chunk = await readFile(chunkPath, "utf8");
+const originalChunk = chunk;
 const moduleStart = '},28192,t=>{"use strict";';
 const moduleEnd = '},62291,1111,t=>';
 const from = chunk.indexOf(moduleStart);
@@ -37,6 +39,7 @@ html = html.slice(0, footerStart) + markup + html.slice(footerEnd + "</footer>".
 
 // Adapt the Contact glass model alone; the shared shader and other objects stay intact.
 let scene = await readFile(scenePath, "utf8");
+const originalScene = scene;
 const materialSource = await readFile(new URL("contact-light-material.js", import.meta.url), "utf8");
 const lightStart = "/* PORTFOLIO_CONTACT_LIGHT_START */";
 const lightEnd = "/* PORTFOLIO_CONTACT_LIGHT_END */";
@@ -64,7 +67,7 @@ replaceSceneOnce(
   "Contact light tint"
 );
 
-await writeFile(chunkPath, chunk);
-await writeFile(scenePath, scene);
+await writeFile(chunkPath, preserveGeneratedFormat(originalChunk, chunk));
+await writeFile(scenePath, preserveGeneratedFormat(originalScene, scene));
 await writeFile(htmlPath, html);
 console.log("Updated contact runtime, light material and static HTML.");

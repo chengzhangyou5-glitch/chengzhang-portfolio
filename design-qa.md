@@ -186,15 +186,3 @@ No blocking questions. Real project destinations will be connected when those pa
 - [x] Local preview left running
 
 final result: passed
-
-
-## Release QA — 2026-10-04
-
-- CanvasFlow detail selectively merged; homepage and other three detail pages preserved.
-- npm ci and npm run build passed.
-- Browser checked at 1707×932 and 390×844: CanvasFlow cover, four information cards, background grid and continuous reading; no horizontal overflow.
-- All three existing project PDFs/page images loaded. /portfolio keeps its Coming Soon placeholder.
-- Production package excludes the local feedback loader. No page errors or missing resources in final local checks; existing THREE.Clock warnings remain.
-- QR files and staged PDF bytes verified unchanged. Scoped source diff whitespace check passed.
-- Screenshots: ../portfolio-release-backups/release-canvasflow-1707x932.png and release-canvasflow-390x844.png.
-- This is the current prototype snapshot; existing PDFs are older versions awaiting replacement, and reference material authorization cleanup remains documented in README.

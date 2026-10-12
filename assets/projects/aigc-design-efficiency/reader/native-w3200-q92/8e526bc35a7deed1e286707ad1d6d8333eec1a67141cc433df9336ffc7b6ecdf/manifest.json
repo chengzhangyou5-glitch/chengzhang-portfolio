@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "continuous-webp",
+  "sha256": "8e526bc35a7deed1e286707ad1d6d8333eec1a67141cc433df9336ffc7b6ecdf",
+  "sourceUrl": "/assets/projects/aigc-design-efficiency/project.pdf",
+  "spec": {
+    "width": 3200,
+    "quality": 92,
+    "method": 4,
+    "maxHeight": 4096,
+    "bleed": 0,
+    "version": "native-w3200-q92"
+  },
+  "maxWidth": 3200,
+  "totalHeight": 19111,
+  "pages": [
+    {
+      "number": 1,
+      "width": 3200,
+      "height": 3079,
+      "offset": 0,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 1847.0
+    },
+    {
+      "number": 2,
+      "width": 3200,
+      "height": 16032,
+      "offset": 3079,
+      "sourceWidth": 1920.0,
+      "sourceHeight": 9619.0
+    }
+  ],
+  "segments": [
+    {
+      "page": 1,
+      "part": 1,
+      "width": 3200,
+      "height": 3079,
+      "top": 0,
+      "imageTop": 0,
+      "imageHeight": 3079,
+      "src": "/assets/projects/aigc-design-efficiency/reader/native-w3200-q92/8e526bc35a7deed1e286707ad1d6d8333eec1a67141cc433df9336ffc7b6ecdf/page-01-01.webp"
+    },
+    {
+      "page": 2,
+      "part": 1,
+      "width": 3200,
+      "height": 4096,
+      "top": 3079,
+      "imageTop": 3079,
+      "imageHeight": 4096,
+      "src": "/assets/projects/aigc-design-efficiency/reader/native-w3200-q92/8e526bc35a7deed1e286707ad1d6d8333eec1a67141cc433df9336ffc7b6ecdf/page-02-01.webp"
+    },
+    {
+      "page": 2,
+      "part": 2,
+      "width": 3200,
+      "height": 4096,
+      "top": 7175,
+      "imageTop": 7175,
+      "imageHeight": 4096,
+      "src": "/assets/projects/aigc-design-efficiency/reader/native-w3200-q92/8e526bc35a7deed1e286707ad1d6d8333eec1a67141cc433df9336ffc7b6ecdf/page-02-02.webp"
+    },
+    {
+      "page": 2,
+      "part": 3,
+      "width": 3200,
+      "height": 4096,
+      "top": 11271,
+      "imageTop": 11271,
+      "imageHeight": 4096,
+      "src": "/assets/projects/aigc-design-efficiency/reader/native-w3200-q92/8e526bc35a7deed1e286707ad1d6d8333eec1a67141cc433df9336ffc7b6ecdf/page-02-03.webp"
+    },
+    {
+      "page": 2,
+      "part": 4,
+      "width": 3200,
+      "height": 3744,
+      "top": 15367,
+      "imageTop": 15367,
+      "imageHeight": 3744,
+      "src": "/assets/projects/aigc-design-efficiency/reader/native-w3200-q92/8e526bc35a7deed1e286707ad1d6d8333eec1a67141cc433df9336ffc7b6ecdf/page-02-04.webp"
+    }
+  ],
+  "resolutionPolicy": {
+    "maxCssZoom": 2.4
+  },
+  "staticResources": {
+    "complete": true,
+    "files": 5,
+    "bytes": 3538476
+  },
+  "sourcePolicy": "Reuse verified native images verbatim; no re-encoding."
+}

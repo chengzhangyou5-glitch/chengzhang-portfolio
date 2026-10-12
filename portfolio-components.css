@@ -1,0 +1,66 @@
+/* Shared component rules for existing semantic selectors; no extra runtime. */
+.project-overview-tags {
+  --tag-height: var(--tag-compact-height);
+  --tag-padding: var(--tag-compact-padding);
+  --tag-border: var(--glass-tag-border);
+  --tag-top: var(--glass-tag-top); --tag-bottom: var(--glass-tag-bottom);
+  --tag-shadow: var(--glass-compact-shadow); --tag-filter: none;
+}
+.portfolio-works .works-tags {
+  --tag-height: var(--tag-standard-height);
+  --tag-padding: var(--tag-standard-padding);
+}
+.experience-project-tag {
+  --tag-height: var(--tag-action-height);
+  --tag-padding: var(--tag-action-padding);
+  --tag-gap: var(--space-3); --tag-shadow: var(--glass-soft-elevated-shadow);
+}
+:is(.project-overview-tags, .portfolio-works .works-tags) > li,
+.experience-project-tag {
+  box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 auto; min-height: var(--tag-height, var(--tag-standard-height));
+  gap: var(--tag-gap, var(--space-2)); padding: var(--tag-padding, var(--tag-standard-padding));
+  border: 1px solid var(--tag-border, var(--glass-soft-border)); border-radius: var(--radius-pill);
+  background: linear-gradient(145deg, var(--tag-top, var(--glass-soft-top)), var(--tag-bottom, var(--glass-soft-bottom)));
+  box-shadow: var(--tag-shadow, var(--glass-soft-shadow));
+  backdrop-filter: var(--tag-filter, blur(var(--glass-blur-soft)));
+  -webkit-backdrop-filter: var(--tag-filter, blur(var(--glass-blur-soft)));
+  font: var(--type-weight-label) var(--type-tag-size)/var(--type-tag-leading) var(--font-body);
+  letter-spacing: var(--type-tracking-default); color: var(--color-reading-ink);
+}
+:is(.project-overview-tags, .portfolio-works .works-tags) > li { white-space: nowrap; }
+
+/* One focus baseline; inset rows, inverse surfaces and reader retain role exceptions. */
+:is(.portfolio-nav-item, .portfolio-menu-trigger, .portfolio-menu-control,
+  .portfolio-settings button, .experience-trigger, .experience-project-tag,
+  .portfolio-works a, .portfolio-works button,
+  .project-detail-page a, .canvasflow-detail a, .project-pdf-control,
+  .contact-connect-dialog button, .contact-connect-dialog a, .contact-connect-trigger,
+  header [aria-label="Scroll to top"]):focus-visible {
+  outline: var(--focus-width) solid var(--component-focus-color, var(--color-focus));
+  outline-offset: var(--component-focus-offset, var(--focus-offset));
+}
+.experience-trigger, header [aria-label="Scroll to top"] { --component-focus-offset: calc(-1 * var(--focus-offset)); }
+.project-overview { --component-focus-color: var(--color-focus-hero); }
+.project-pdf-control { --component-focus-offset: var(--focus-offset-reader); }
+.contact-connect-dialog, .contact-connect-trigger { --component-focus-color: var(--color-focus-inverse); }
+:root:not(.dark) .contact-connect-trigger { --component-focus-color: var(--contact-ink); }
+
+/* Visual reader/cue dimensions stay unchanged; their mobile hit rectangles grow. */
+@media (max-width: 767px) {
+  .experience-project-tag { --tag-height: var(--control-touch-min); --tag-gap: var(--space-2); }
+  .portfolio-menu-trigger, .portfolio-nav-item, .portfolio-menu-control {
+    min-height: var(--control-touch-min);
+  }
+  .works-select button { min-width: var(--control-touch-min); min-height: var(--control-touch-min); }
+  .contact-connect-copy { min-height: var(--control-touch-min); }
+  .project-pdf-control, .project-overview-cue { position: relative; }
+  .project-pdf-control::after, .project-overview-cue::after {
+    content: ""; position: absolute; pointer-events: auto;
+  }
+  /* Absolute inset uses the padding box: include the existing 1px border. */
+  .project-pdf-control::after { inset: calc((var(--control-reader-size) - var(--control-touch-min)) / 2 - var(--component-border-width)); }
+  .project-overview-cue::after { inset: -12px 0; }
+}
+
+.portfolio-settings { --component-focus-color: var(--settings-focus); }
