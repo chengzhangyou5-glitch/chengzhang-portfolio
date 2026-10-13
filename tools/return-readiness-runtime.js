@@ -31,7 +31,7 @@ export function waitForSelectedWorksPresentation(state, onReady) {
     if (state.phase !== 'preparing') return;
     const host = document.querySelector('#featured-projects');
     const stage = host?.querySelector('.works-stage');
-    const pinned = matchMedia('(min-width: 901px) and (min-height: 621px)').matches || matchMedia('(min-width: 360px) and (max-width: 900px) and (min-height: 800px)').matches;
+    const pinned = !window.__portfolioWorksLayout.get().reading;
     let image, positionReady;
     if (pinned) {
       image = host?.querySelector('.works-plane[data-active="true"] img');
@@ -39,7 +39,7 @@ export function waitForSelectedWorksPresentation(state, onReady) {
       const index = planes.findIndex(plane => plane.dataset.projectId === state.projectId);
       const progress = Number(host?.dataset.worksScrollProgress);
       positionReady = index >= 0 && host?.dataset.activeProject === state.projectId && Math.abs(stage?.getBoundingClientRect().top ?? Infinity) <= 1 &&
-        Math.abs(progress - index) * innerHeight <= .5;
+        Math.abs(progress - index) * window.__portfolioWorksLayout.stageHeight(host) <= .5;
     } else {
       const row = [...(host?.querySelectorAll('.works-mobile-project') || [])].find(element => element.querySelector('[data-project-id]')?.dataset.projectId === state.projectId);
       image = row?.querySelector('img');

@@ -49,9 +49,7 @@ function usePortfolioPageReadiness(sceneReady, idle) {
         const stage = host?.querySelector('.works-stage');
         const rect = stage?.getBoundingClientRect();
         const selected = !entry.returnId || host?.dataset.activeProject === entry.returnId;
-        const desktop = matchMedia('(min-width: 901px) and (min-height: 621px)').matches;
-        const pinnedPhone = matchMedia('(min-width: 360px) and (max-width: 900px) and (min-height: 800px)').matches;
-        if (desktop || pinnedPhone) {
+        if (!window.__portfolioWorksLayout.get().reading) {
           ready = selected && !!rect && rect.top < innerHeight && rect.bottom > 0 &&
             imageReady(host?.querySelector('.works-plane[data-active="true"] img'));
         } else {
@@ -76,7 +74,6 @@ function usePortfolioPageReadiness(sceneReady, idle) {
   }, [idle, entry, foregroundReady]);
   return { ready: !!entry && foregroundReady, fast: !!entry?.fast };
 }
-
 /* PORTFOLIO_PAGE_READINESS_END */
 
 

@@ -412,14 +412,12 @@ function PortfolioSelectedWorks() {
       if (window.location.hash !== "#featured-projects" && !returnId) return;
       const index = Math.max(0, portfolioSelectedProjects.findIndex(project => project.id === returnId));
       const element = host.current;
-      const narrow = window.matchMedia("(max-width: 900px), (max-height: 620px)").matches;
-      const pinnedPhone = window.matchMedia("(min-width: 360px) and (max-width: 900px) and (min-height: 800px)").matches;
-      const reading = narrow && !pinnedPhone;
+      const reading = window.__portfolioWorksLayout.get().reading;
       const target = reading && returnId ? element.querySelectorAll(".works-mobile-project")[index] : element;
       // Rectangles and scrollTop must come from the same presented DOM frame.
       // Retain fractional height: paint() uses rect.height, not offsetHeight.
       const top = container.scrollTop + target.getBoundingClientRect().top - container.getBoundingClientRect().top;
-      const travel = reading ? 0 : element.getBoundingClientRect().height - worksScrollEnv.getViewportHeightPx();
+      const travel = reading ? 0 : element.getBoundingClientRect().height - window.__portfolioWorksLayout.stageHeight(element, container.clientHeight);
       worksScrollEnv.lenisScrollTo(top + travel * index / portfolioWorksLastIndex - (reading ? 90 : 0), { immediate: true });
       sessionStorage.removeItem("portfolio:works-return");
     };
@@ -432,7 +430,6 @@ function PortfolioSelectedWorks() {
     const element = host.current;
     if (!element) return;
     const narrow = window.matchMedia("(max-width: 900px), (max-height: 620px)");
-    const pinnedPhone = window.matchMedia("(min-width: 360px) and (max-width: 900px) and (min-height: 800px)");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const scrollContainer = container || worksScrollEnv.getContainerEl() || window;
     let frame = 0;
@@ -443,6 +440,7 @@ function PortfolioSelectedWorks() {
     let gesturePending = false;
     let settleTimer = 0;
     let touchY = null;
+    let presented = null;
 
     // Let native/Lenis scrolling move every plane continuously, then gently
     // settle the current gesture on a project. No wheel or touch is cancelled.
@@ -451,18 +449,19 @@ function PortfolioSelectedWorks() {
       const pending = gesturePending;
       gesturePending = false;
       element.dataset.worksSnapState = `settle:${pending}:${progressNow.toFixed(4)}:${dominantNow}`;
-      if (!pending || reduced.matches || element.dataset.stageActive !== "true") return;
+      if (!pending || window.__portfolioWorksLayout.get().reading || reduced.matches || element.dataset.stageActive !== "true") return;
       const index = dominantNow;
-      if (Math.abs(progressNow - index) * worksScrollEnv.getViewportHeightPx() < .5) return;
+      const stageHeight = window.__portfolioWorksLayout.stageHeight(element, container?.clientHeight || worksScrollEnv.getViewportHeightPx());
+      if (Math.abs(progressNow - index) * stageHeight < .5) return;
       // DOM rectangles and DOM scrollTop belong to the same rendered frame.
       // The Lenis snapshot may be ahead of that frame during deceleration.
       const top = (container ? container.scrollTop : window.scrollY) + element.getBoundingClientRect().top - (container?.getBoundingClientRect().top || 0);
-      const destination = top + (element.offsetHeight - worksScrollEnv.getViewportHeightPx()) * index / portfolioWorksLastIndex;
+      const destination = top + (element.getBoundingClientRect().height - stageHeight) * index / portfolioWorksLastIndex;
       element.dataset.worksSnapTarget = destination.toFixed(3);
       worksScrollEnv.lenisScrollTo(destination, { duration: .8, onComplete: () => { element.dataset.worksSnapState = 'complete'; schedule(); } });
     };
     const intent = direction => {
-      if (element.dataset.stageActive !== "true" || reduced.matches || !direction) return;
+      if (window.__portfolioWorksLayout.get().reading || element.dataset.stageActive !== "true" || reduced.matches || !direction) return;
       gesturePending = true;
       element.dataset.worksSnapState = 'gesture';
       clearTimeout(settleTimer);
@@ -480,9 +479,29 @@ function PortfolioSelectedWorks() {
 
     const paint = () => {
       frame = 0;
+      const layout = window.__portfolioWorksLayout.get();
       const isMobile = narrow.matches;
-      const isCompact = pinnedPhone.matches;
-      const reading = isMobile && !isCompact;
+      const isCompact = layout.pinned;
+      const reading = layout.reading;
+      const viewport = container?.clientHeight || worksScrollEnv.getViewportHeightPx() || window.innerHeight;
+      const stageHeight = window.__portfolioWorksLayout.stageHeight(element, viewport);
+      const containerTop = container?.getBoundingClientRect().top || 0;
+      // Earlier sections also use viewport units. Preserve the presented row or
+      // stage progress when their heights change, without reseeding animations.
+      if (layout.phone && presented?.onScreen && presented.width === window.innerWidth &&
+          presented.height !== viewport && presented.reading === reading) {
+        cancelSettle.current?.();
+        const scrollTop = container ? container.scrollTop : window.scrollY;
+        let destination;
+        if (reading) {
+          const row = element.querySelectorAll('.works-mobile-project')[presented.index];
+          destination = scrollTop + row.getBoundingClientRect().top - containerTop - presented.rowTop;
+        } else {
+          const rect = element.getBoundingClientRect();
+          destination = scrollTop + rect.top - containerTop + Math.max(1, rect.height - stageHeight) * presented.progress / portfolioWorksLastIndex;
+        }
+        worksScrollEnv.lenisScrollTo(destination, { immediate: true });
+      }
       setMobile(previous => previous === reading ? previous : reading);
       let progress;
       if (reading) {
@@ -501,16 +520,14 @@ function PortfolioSelectedWorks() {
         });
       } else {
         const rect = element.getBoundingClientRect();
-        const viewport = worksScrollEnv.getViewportHeightPx() || window.innerHeight;
-        const containerTop = container?.getBoundingClientRect().top || 0;
-        const travel = Math.max(1, rect.height - viewport);
+        const travel = Math.max(1, rect.height - stageHeight);
         progress = Math.max(0, Math.min(portfolioWorksLastIndex, (containerTop - rect.top) / travel * portfolioWorksLastIndex));
         element.dataset.stageActive = String(rect.top <= containerTop + 1 && rect.bottom >= containerTop + viewport - 1);
         // All three columns use this same continuous scroll position.
         element.querySelectorAll(".works-plane").forEach((plane, index) => {
           const distance = index - progress;
           const depth = Math.min(1.8, Math.abs(distance));
-          plane.style.setProperty("--plane-y", `${distance * viewport * (isCompact ? distance < 0 ? .54 : .64 : .49)}px`);
+          plane.style.setProperty("--plane-y", `${distance * stageHeight * (isCompact ? distance < 0 ? .54 : .64 : .49)}px`);
           // On phones, neighboring covers stay in the corners and clear the
           // fixed wordmark/menu instead of crossing the metadata.
           plane.style.setProperty("--plane-x", `${reduced.matches ? 0 : -distance * window.innerWidth * (isCompact ? distance < 0 ? .60 : .38 : .055)}px`);
@@ -558,6 +575,10 @@ function PortfolioSelectedWorks() {
         activeRef.current = next;
         setActive(next);
       }
+      const rect = element.getBoundingClientRect();
+      presented = { width: window.innerWidth, height: viewport, reading, index: next, progress,
+        onScreen: rect.top < containerTop + viewport && rect.bottom > containerTop,
+        rowTop: reading ? element.querySelectorAll('.works-mobile-project')[next]?.getBoundingClientRect().top - containerTop : null };
     };
     const schedule = () => { if (inView && !frame) frame = requestAnimationFrame(paint); };
     const scroll = () => {
@@ -579,7 +600,7 @@ function PortfolioSelectedWorks() {
     scrollContainer.addEventListener("touchmove", touchMove, { passive: true });
     window.addEventListener("resize", schedule, { passive: true });
     narrow.addEventListener("change", schedule);
-    pinnedPhone.addEventListener("change", schedule);
+    window.addEventListener("portfolio:works-layout", schedule);
     reduced.addEventListener("change", schedule);
     paint();
     return () => {
@@ -596,7 +617,7 @@ function PortfolioSelectedWorks() {
       scrollContainer.removeEventListener("touchmove", touchMove);
       window.removeEventListener("resize", schedule);
       narrow.removeEventListener("change", schedule);
-      pinnedPhone.removeEventListener("change", schedule);
+      window.removeEventListener("portfolio:works-layout", schedule);
       reduced.removeEventListener("change", schedule);
     };
   }, [container]);
@@ -604,12 +625,16 @@ function PortfolioSelectedWorks() {
   function selectProject(index) {
     cancelSettle.current?.();
     const element = host.current;
-    if (mobile) {
-      worksScrollEnv.lenisScrollTo(element.querySelectorAll(".works-mobile-project")[index], { offset: -80 });
+    if (window.__portfolioWorksLayout.get().reading) {
+      const row = element.querySelectorAll(".works-mobile-project")[index];
+      const top = (container ? container.scrollTop : window.scrollY) + row.getBoundingClientRect().top - (container?.getBoundingClientRect().top || 0);
+      // Match the existing 90px return anchor; an element target also applies
+      // its CSS scroll-margin, which previously doubled the list offset.
+      worksScrollEnv.lenisScrollTo(top - 90, { immediate: window.matchMedia("(prefers-reduced-motion: reduce)").matches });
       return;
     }
     const top = (container ? container.scrollTop : window.scrollY) + element.getBoundingClientRect().top - (container?.getBoundingClientRect().top || 0);
-    const travel = element.offsetHeight - worksScrollEnv.getViewportHeightPx();
+    const travel = element.getBoundingClientRect().height - window.__portfolioWorksLayout.stageHeight(element, container?.clientHeight || worksScrollEnv.getViewportHeightPx());
     worksScrollEnv.lenisScrollTo(top + travel * index / portfolioWorksLastIndex, {
       immediate: window.matchMedia("(prefers-reduced-motion: reduce)").matches
     });
