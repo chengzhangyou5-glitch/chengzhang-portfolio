@@ -1,0 +1,27 @@
+[
+  {
+    "path": "page-01-01.webp",
+    "bytes": 478490,
+    "sha256": "0b2e70f6d8c3097799a3228bdf08c1eb09a1428a139e5460435a2c51a22d4463"
+  },
+  {
+    "path": "page-02-01.webp",
+    "bytes": 658546,
+    "sha256": "5e94939536c773a439553f17140a31b29e57f20b77fbaad78b81699bbb42bb72"
+  },
+  {
+    "path": "page-02-02.webp",
+    "bytes": 810858,
+    "sha256": "4195e432b5a8fd0d45ea6dfb0e5026ed0f65b46b2ad559328d0c3b5c7d6a94e9"
+  },
+  {
+    "path": "page-02-03.webp",
+    "bytes": 867416,
+    "sha256": "700a43bb36a631185fa79827ab94931b6ad98b05e2d90ab5ee94d91d082efbc0"
+  },
+  {
+    "path": "page-02-04.webp",
+    "bytes": 671942,
+    "sha256": "70ddd2670d55cda8835f86e08b0d86e0f5dbb0451735819ae42f5361bfccdba0"
+  }
+]

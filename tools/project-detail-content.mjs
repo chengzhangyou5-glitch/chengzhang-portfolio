@@ -23,7 +23,7 @@ export const projectDetails = [
     objective: "搭建模型训练、素材生成、人工优化与复用的工作流，提高多场景素材的一致性。",
     contributions: ["整理并标注训练素材，完成 LoRA 训练、参数测试与模型迭代。", "串联 ComfyUI 生成与后期精修，沉淀可复用的素材生产流程。"],
     outcome: "输出多场景运营海报与素材，沉淀模型测试方法及 AI 辅助设计工作流。",
-    reading: { kind: "pdf", renderer: "continuous-webp", sourceHash: "8e526bc35a7deed1e286707ad1d6d8333eec1a67141cc433df9336ffc7b6ecdf", pdf: "/assets/projects/aigc-design-efficiency/project.pdf", manifest: "assets/projects/aigc-design-efficiency/reader/native-w3200-q92/8e526bc35a7deed1e286707ad1d6d8333eec1a67141cc433df9336ffc7b6ecdf/manifest.json" },
+    reading: { kind: "pdf", renderer: "continuous-webp", sourceHash: "ee9e7ac086e55dff491497bd9bc2ece6077ae060c0c98cf67be49fcbf8d5d784", pdf: "/assets/projects/aigc-design-efficiency/project.pdf", manifest: "assets/projects/aigc-design-efficiency/reader/native-w3200-q92/ee9e7ac086e55dff491497bd9bc2ece6077ae060c0c98cf67be49fcbf8d5d784/manifest.json" },
   },
   {
     id: "fliggy-lele-run", number: "03", title: "飞猪乐乐跑",
@@ -35,12 +35,12 @@ export const projectDetails = [
     objective: "统一活动主视觉与 IP 场景表现，支持游戏流程、奖励反馈与分享传播。",
     contributions: ["负责核心运营视觉，完成飞猪 IP 角色延展、场景与页面物料设计。", "结合 SD、LoRA 生成并优化素材，沉淀 AI 辅助视觉生产流程。"],
     outcome: "完成活动核心视觉物料及页面设计落地，形成可复用的 IP 素材与制作流程。",
-    reading: { kind: "pdf", renderer: "continuous-webp", sourceHash: "59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e", pdf: "/assets/projects/fliggy-lele-run/project.pdf", manifest: "assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/59d51c4ee082c48a670cf1d06facb5ea1491081e534a6c395219208fcbf36b8e/manifest.json" },
+    reading: { kind: "pdf", renderer: "continuous-webp", sourceHash: "ea5ef6e793657fb2bcbed62df070e19f603bdb0e9c52f8dd0bd081623e75ffb5", pdf: "/assets/projects/fliggy-lele-run/project.pdf", manifest: "assets/projects/fliggy-lele-run/reader/w3200-q92-s4096-v1/ea5ef6e793657fb2bcbed62df070e19f603bdb0e9c52f8dd0bd081623e75ffb5/manifest.json" },
   },
   {
     id: "lexin-health-app", number: "04", title: "乐心健康 APP",
     subtitle: "健康与运动体验迭代升级", category: "产品设计 / UI·UX",
-    role: "UX 设计师", period: "2024.07 — 2025.12", positioning: "健康产品 · 体验迭代",
+    role: "UX 设计师", period: "2024.07 — 2024.12", positioning: "健康产品 · 体验迭代",
     tags: ["用户研究", "交互设计", "数据可视化"],
     cover: { src: "/assets/works/lexin-health-app.png", width: 1712, height: 1160, caption: "原始项目封面" },
     background: "健康类 APP 信息层级复杂，课程查找成本较高，运动过程的反馈与持续激励不足。",
